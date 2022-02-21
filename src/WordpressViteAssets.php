@@ -95,7 +95,7 @@ class WordpressViteAssets
      */
     public function getStyleTags(string $entry): array
     {
-        return array_map(function ($url) {
+        return array_map(function($url) {
             return "<link rel=\"stylesheet\" href=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\" />";
         }, $this->vm->getStyles($entry));
     }

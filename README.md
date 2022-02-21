@@ -11,6 +11,10 @@
 
 ## Usage
 
+Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri)`
+
+**Example**
+
 ```php
 use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
