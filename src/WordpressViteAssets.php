@@ -41,7 +41,7 @@ class WordpressViteAssets
      * @param array|string $entry
      * @return void
      */
-    public function addAction(array|string $entries, int $priority = 0): string
+    public function addAction(array|string $entries, int $priority = 0): void
     {
         if (!function_exists('add_action')) {
             throw new \Exception("WordPress function add_action() not found");
@@ -49,7 +49,7 @@ class WordpressViteAssets
 
         $entries = is_array($entries) ? $entries : [$entries];
 
-        add_action('wp_head', function () {
+        add_action('wp_head', function () use ($entries) {
             foreach($entries as $entry) {
                 $scriptTag = $this->getScriptTag($entry);
 
@@ -65,7 +65,9 @@ class WordpressViteAssets
                     echo $styleTag . PHP_EOL;
                 }
             }
-        }, $priority);
+        }, $priority, 1);
+
+        do_action('wp_head', $entries);
     }
 
     /**
@@ -82,7 +84,7 @@ class WordpressViteAssets
             return null;
         }
 
-        return "<script type=\"module\" src=\"{$url['src']}\" crossorigin integrity=\"{$url['integrity']}\"></script>";
+        return "<script type=\"module\" src=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\"></script>";
     }
 
     /**
@@ -94,7 +96,7 @@ class WordpressViteAssets
     public function getStyleTags(string $entry): array
     {
         return array_map(function ($url) {
-            return "<link rel=\"stylesheet\" href=\"{$url['href']}\" crossorigin integrity=\"{$url['integrity']}\" />";
+            return "<link rel=\"stylesheet\" href=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\" />";
         }, $this->vm->getStyles($entry));
     }
 
@@ -107,7 +109,7 @@ class WordpressViteAssets
     public function getPreloadTags(string $entry): array
     {
         return array_map(function($import) {
-            return "<link rel=\"modulepreload\" href=\"{$import['href']}\">";
+            return "<link rel=\"modulepreload\" href=\"{$import['url']}\">";
         }, $this->vm->getImports($entry));
     }
 }
