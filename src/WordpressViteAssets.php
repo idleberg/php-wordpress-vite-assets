@@ -30,9 +30,9 @@ class WordpressViteAssets
 {
     private $vm;
 
-    public function __construct(string $manifestFile)
+    public function __construct(string $manifestFile, string $basePath)
     {
-        $this->vm = new ViteManifest($manifestFile);
+        $this->vm = new ViteManifest($manifestFile, $basePath);
     }
 
     /**
@@ -49,7 +49,7 @@ class WordpressViteAssets
 
         $entries = is_array($entries) ? $entries : [$entries];
 
-        add_action('wp_head', function () use ($entries) {
+        add_action('wp_head', function() use ($entries) {
             foreach($entries as $entry) {
                 $scriptTag = $this->getScriptTag($entry);
 
