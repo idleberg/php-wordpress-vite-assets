@@ -1,0 +1,29 @@
+{
+    "name": "idleberg/wordpress-vite-assets",
+    "description": "Adds assets from a Vite manifest to the Wordpress head",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "wordpress",
+        "vite",
+        "vitejs",
+        "vite manifest"
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Idleberg\\WordpressViteAssets\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jan T. Sott",
+            "email": "idleberg@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "idleberg/vite-manifest": "^0.3.0"
+    }
+}

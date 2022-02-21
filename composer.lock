@@ -1,0 +1,121 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0d371bdb416a52babf4fe773f9176b9b",
+    "packages": [
+        {
+            "name": "idleberg/vite-manifest",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/idleberg/php-vite-manifest.git",
+                "reference": "2a91855f5a4b2715a19aba665e50d436e159c6d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/2a91855f5a4b2715a19aba665e50d436e159c6d7",
+                "reference": "2a91855f5a4b2715a19aba665e50d436e159c6d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "riimu/kit-pathjoin": "^1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Idleberg\\ViteManifest\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan T. Sott",
+                    "email": "idleberg@users.noreply.github.com"
+                }
+            ],
+            "description": "A parser for Vite v2 manifest files",
+            "keywords": [
+                "vite",
+                "vite manifest",
+                "vitejs"
+            ],
+            "support": {
+                "issues": "https://github.com/idleberg/php-vite-manifest/issues",
+                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.3.0"
+            },
+            "time": "2022-02-21T00:15:14+00:00"
+        },
+        {
+            "name": "riimu/kit-pathjoin",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Riimu/Kit-PathJoin.git",
+                "reference": "8ad2656c79527dba9f7f20e1229dcd38abfe8cee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Riimu/Kit-PathJoin/zipball/8ad2656c79527dba9f7f20e1229dcd38abfe8cee",
+                "reference": "8ad2656c79527dba9f7f20e1229dcd38abfe8cee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.3",
+                "phpunit/phpunit": "^5.7 || ^6.2",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Riimu\\Kit\\PathJoin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Riikka Kalliomäki",
+                    "email": "riikka.kalliomaki@gmail.com",
+                    "homepage": "http://riimu.net"
+                }
+            ],
+            "description": "Cross-platform library for normalizing and joining file system paths",
+            "homepage": "http://kit.riimu.net",
+            "keywords": [
+                "file",
+                "join",
+                "normalize",
+                "path",
+                "system"
+            ],
+            "support": {
+                "issues": "https://github.com/Riimu/Kit-PathJoin/issues",
+                "source": "https://github.com/Riimu/Kit-PathJoin/tree/master"
+            },
+            "time": "2017-07-09T14:41:04+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=7.0.0"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
+}
