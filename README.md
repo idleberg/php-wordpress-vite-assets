@@ -21,14 +21,14 @@ Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri)`
 use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
 $viteAssets = new WordpressViteAssets("path/to/manifest.json");
-$viteAssets->addAction();
+$viteAssets->addAction("index.ts");
 ```
 
 ### Methods
 
 #### `addAction`
 
-Usage: `addAction(array|string $entries, int $priority = 0)`
+Usage: `addAction(array|string $entrypoints, int $priority = 0)`
 
 Writes tags for entries specified in the manifest to the page header
 
@@ -38,19 +38,19 @@ Writes tags for entries specified in the manifest to the page header
 
 #### `getScriptTag`
 
-Usage: `getScriptTag(string $fileName)`
+Usage: `getScriptTag(string $entrypoint)`
 
 Returns the script tag for an entry in the manifest
 
 #### `getStyleTags`
 
-Usage: `getStyleTags(string $fileName)`
+Usage: `getStyleTags(string $entrypoint)`
 
 Returns the style tags for an entry in the manifest
 
 #### `getPreloadTags`
 
-Usage: `getPreloadTags(string $fileName)`
+Usage: `getPreloadTags(string $entrypoint)`
 
 Returns the preload tags for an entry in the manifest
 

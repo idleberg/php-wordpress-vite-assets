@@ -38,16 +38,16 @@ class WordpressViteAssets
     /**
      * Writes tags for entries specified in the manifest to the page header
      *
-     * @param array|string $entry
+     * @param array|string $entrypoint
      * @return void
      */
-    public function addAction(array|string $entries, int $priority = 0): void
+    public function addAction(array|string $entrypoint, int $priority = 0): void
     {
         if (!function_exists('add_action')) {
             throw new \Exception("WordPress function add_action() not found");
         }
 
-        $entries = is_array($entries) ? $entries : [$entries];
+        $entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
         add_action('wp_head', function() use ($entries) {
             foreach($entries as $entry) {
@@ -71,12 +71,12 @@ class WordpressViteAssets
     /**
      * Returns the script tag for an entry in the manifest
      *
-     * @param string $entry
+     * @param string $entrypoint
      * @return string
      */
-    public function getScriptTag(string $entry): string
+    public function getScriptTag(string $entrypoint): string
     {
-        $url = $this->vm->getEntrypoint($entry);
+        $url = $this->vm->getEntrypoint($entrypoint);
 
         if (!$url) {
             return null;
@@ -88,14 +88,14 @@ class WordpressViteAssets
     /**
      * Returns the style tags for an entry in the manifest
      *
-     * @param string $entry
+     * @param string $entrypoint
      * @return array
      */
-    public function getStyleTags(string $entry): array
+    public function getStyleTags(string $entrypoint): array
     {
         return array_map(function($url) {
             return "<link rel=\"stylesheet\" href=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\" />";
-        }, $this->vm->getStyles($entry));
+        }, $this->vm->getStyles($entrypoint));
     }
 
     /**
