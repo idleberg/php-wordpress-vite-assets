@@ -20,12 +20,12 @@ Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri)`
 ```php
 use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
-$baseDir = get_stylesheet_directory();
-$manifest = $baseDir . "/manifest.json";
+$baseUrl = get_stylesheet_directory();
+$manifest = $baseUrl . "/manifest.json";
 $entryPoint = "index.ts";
 
 $viteAssets = new WordpressViteAssets($manifest);
-$viteAssets->addAction($entryPoint, $baseDir);
+$viteAssets->addAction($entryPoint, $baseUrl);
 ```
 
 ### Methods
