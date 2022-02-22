@@ -20,10 +20,11 @@ Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri)`
 ```php
 use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
-$myTheme = get_stylesheet_directory();
+$baseDir = get_stylesheet_directory();
+$manifest = $baseDir . "/manifest.json";
 
-$viteAssets = new WordpressViteAssets($myTheme . "/manifest.json");
-$viteAssets->addAction("index.ts", $myTheme);
+$viteAssets = new WordpressViteAssets($manifest);
+$viteAssets->addAction("index.ts", $baseDir);
 ```
 
 ### Methods
