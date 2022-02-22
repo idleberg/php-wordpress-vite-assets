@@ -21,7 +21,7 @@ Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri)`
 use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
 $viteAssets = new WordpressViteAssets("path/to/manifest.json");
-$viteAssets->addAction("index.ts");
+$viteAssets->addAction("index.ts", get_stylesheet_directory());
 ```
 
 ### Methods
