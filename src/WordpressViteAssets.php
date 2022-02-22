@@ -66,8 +66,6 @@ class WordpressViteAssets
                 }
             }
         }, $priority, 1);
-
-        do_action('wp_head', $entries);
     }
 
     /**
