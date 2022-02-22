@@ -22,9 +22,10 @@ use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
 $baseDir = get_stylesheet_directory();
 $manifest = $baseDir . "/manifest.json";
+$entryPoint = "index.ts";
 
 $viteAssets = new WordpressViteAssets($manifest);
-$viteAssets->addAction("index.ts", $baseDir);
+$viteAssets->addAction($entryPoint, $baseDir);
 ```
 
 ### Methods
