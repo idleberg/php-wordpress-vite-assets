@@ -41,7 +41,7 @@ class WordpressViteAssets
      * @param array|string $entrypoint
      * @return void
      */
-    public function addAction(array|string $entrypoint, int $priority = 0): void
+    public function addAction(array|string $entrypoint, array|int $priority = 0): void
     {
         if (!function_exists('add_action')) {
             throw new \Exception("WordPress function add_action() not found");
@@ -56,16 +56,24 @@ class WordpressViteAssets
                 if ($scriptTag) {
                     echo $scriptTag . PHP_EOL;
                 }
+            }
+        }, $this->getPriority($priority, "scripts"), 1);
 
+        add_action('wp_head', function() use ($entries) {
+            foreach($entries as $entry) {
                 foreach($this->getPreloadTags($entry) as $preloadTag) {
                     echo $preloadTag . PHP_EOL;
                 }
+            }
+        }, $this->getPriority($priority, "preloads"), 1);
 
+        add_action('wp_head', function() use ($entries) {
+            foreach($entries as $entry) {
                 foreach($this->getStyleTags($entry) as $styleTag) {
                     echo $styleTag . PHP_EOL;
                 }
             }
-        }, $priority, 1);
+        }, $this->getPriority($priority, "styles"), 1);
     }
 
     /**
@@ -109,5 +117,26 @@ class WordpressViteAssets
         return array_map(function($import) {
             return "<link rel=\"modulepreload\" href=\"{$import['url']}\">";
         }, $this->vm->getImports($entry));
+    }
+
+    /**
+     * Returns priority for an action
+     *
+     * @param array|int $priority
+     * @param string $key
+     * @return int
+     */
+    private function getPriority(array|int $priority, string $key)
+    {
+        switch (true) {
+            case is_integer($priority):
+                return $priority;
+
+            case is_array($priority) && is_integer($priority[$key]):
+                return $priority[$key];
+
+            default:
+                return 0;
+        }
     }
 }

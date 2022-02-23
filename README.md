@@ -33,13 +33,27 @@ $viteAssets->addAction($entryPoint, $baseUrl);
 
 #### `addAction`
 
-Usage: `addAction(array|string $entrypoints, int $priority = 0)`
+Usage: `addAction(array|string $entrypoints, array|int $priority = 0)`
 
 Writes tags for entries specified in the manifest to the page header
 
 - script entrypoint
 - preloads for imported scripts
 - style tags
+
+The priority argument allows granular control when provided as an array
+
+**Example**
+
+```php
+$priorities = [
+    "scripts" => 10,
+    "preloads" => 0,
+    "styles" => 20
+];
+
+$viteAssets->addAction($entrypoints, $priorities);
+```
 
 #### `getScriptTag`
 
