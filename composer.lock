@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d3b322f772ce72ffe3dd3f3c45f0de0",
+    "content-hash": "d99b090d24295a642b244a7fbe06d2fa",
     "packages": [
         {
             "name": "idleberg/vite-manifest",
-            "version": "v0.4.0",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/idleberg/php-vite-manifest.git",
-                "reference": "1a57229b5926e48acc3e7482753b9cf6a70d566e"
+                "reference": "cb779fc6582165d3a7b9b92fe446b801c1bc71e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/1a57229b5926e48acc3e7482753b9cf6a70d566e",
-                "reference": "1a57229b5926e48acc3e7482753b9cf6a70d566e",
+                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/cb779fc6582165d3a7b9b92fe446b801c1bc71e2",
+                "reference": "cb779fc6582165d3a7b9b92fe446b801c1bc71e2",
                 "shasum": ""
             },
             "require": {
                 "league/uri": "^6.0",
-                "php": "^7.3 || ^8.0"
+                "php": "^7.4 || ^8.0"
             },
             "type": "library",
             "autoload": {
@@ -48,9 +48,9 @@
             ],
             "support": {
                 "issues": "https://github.com/idleberg/php-vite-manifest/issues",
-                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.4.0"
+                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.5.0"
             },
-            "time": "2022-02-21T20:42:23+00:00"
+            "time": "2022-02-24T21:43:40+00:00"
         },
         {
             "name": "league/uri",
@@ -280,7 +280,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": "^7.4 || ^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.2.0"
