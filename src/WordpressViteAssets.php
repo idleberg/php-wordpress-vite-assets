@@ -41,7 +41,7 @@ class WordpressViteAssets
      * @param array|string $entrypoint
      * @return void
      */
-    public function addAction(array|string $entrypoint, array|int $priority = 0): void
+    public function addAction(string $entrypoint, int $priority = 0): void
     {
         if (!function_exists('add_action')) {
             throw new \Exception("WordPress function add_action() not found");
@@ -126,7 +126,7 @@ class WordpressViteAssets
      * @param string $key
      * @return int
      */
-    private function getPriority(array|int $priority, string $key)
+    private function getPriority(int $priority, string $key)
     {
         switch (true) {
             case is_integer($priority):
