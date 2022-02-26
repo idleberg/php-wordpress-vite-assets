@@ -19,6 +19,8 @@ Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri)`
 **Example**
 
 ```php
+// functions.php
+
 use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
 $baseUrl = get_stylesheet_directory();
