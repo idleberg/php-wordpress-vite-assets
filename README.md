@@ -49,9 +49,9 @@ The priority argument allows granular control when provided as an array
 
 ```php
 $priorities = [
-    "scripts" => 10,
+    "scripts"  => 10,
     "preloads" => 0,
-    "styles" => 20
+    "styles"   => 20
 ];
 
 $viteAssets->addAction($entrypoints, $priorities);
