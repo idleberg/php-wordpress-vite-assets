@@ -27,8 +27,8 @@ $baseUrl = get_stylesheet_directory();
 $manifest = $baseUrl . "/manifest.json";
 $entryPoint = "index.ts";
 
-$viteAssets = new WordpressViteAssets($manifest);
-$viteAssets->addAction($entryPoint, $baseUrl);
+$viteAssets = new WordpressViteAssets($manifest, $baseUrl);
+$viteAssets->addAction($entryPoint);
 ```
 
 ### Methods
