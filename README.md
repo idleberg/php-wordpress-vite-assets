@@ -27,8 +27,8 @@ $baseUrl = get_stylesheet_directory();
 $manifest = $baseUrl . "/manifest.json";
 $entryPoint = "index.ts";
 
-$viteAssets = new WordpressViteAssets($manifest);
-$viteAssets->addAction($entryPoint, $baseUrl);
+$viteAssets = new WordpressViteAssets($manifest, $baseUrl);
+$viteAssets->addAction($entryPoint);
 ```
 
 ### Methods
@@ -49,9 +49,9 @@ The priority argument allows granular control when provided as an array
 
 ```php
 $priorities = [
-    "scripts" => 10,
+    "scripts"  => 10,
     "preloads" => 0,
-    "styles" => 20
+    "styles"   => 20
 ];
 
 $viteAssets->addAction($entrypoints, $priorities);
