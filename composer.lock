@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d99b090d24295a642b244a7fbe06d2fa",
+    "content-hash": "07149d9b6e5b3c05e90572d6d4eda591",
     "packages": [
         {
             "name": "idleberg/vite-manifest",
-            "version": "v0.5.0",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/idleberg/php-vite-manifest.git",
-                "reference": "cb779fc6582165d3a7b9b92fe446b801c1bc71e2"
+                "reference": "6b6b1802a3faca9a8a05f7caa7d9554dc61ff686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/cb779fc6582165d3a7b9b92fe446b801c1bc71e2",
-                "reference": "cb779fc6582165d3a7b9b92fe446b801c1bc71e2",
+                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/6b6b1802a3faca9a8a05f7caa7d9554dc61ff686",
+                "reference": "6b6b1802a3faca9a8a05f7caa7d9554dc61ff686",
                 "shasum": ""
             },
             "require": {
@@ -48,9 +48,9 @@
             ],
             "support": {
                 "issues": "https://github.com/idleberg/php-vite-manifest/issues",
-                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.5.0"
+                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.5.1"
             },
-            "time": "2022-02-24T21:43:40+00:00"
+            "time": "2022-03-01T20:21:37+00:00"
         },
         {
             "name": "league/uri",
