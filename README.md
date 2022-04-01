@@ -5,6 +5,7 @@
 [![Packagist](https://flat.badgen.net/packagist/license/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
 [![Packagist](https://flat.badgen.net/packagist/php/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
 [![Packagist](https://flat.badgen.net/packagist/v/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
+[![CI](https://img.shields.io/github/workflow/status/idleberg/php-wordpress-vite-assets/CI?style=flat-square)](https://github.com/idleberg/php-wordpress-vite-assets/actions)
 
 ## Installation
 
