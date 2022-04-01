@@ -28,9 +28,12 @@
     },
     "require-dev": {
         "codeception/codeception": "^4.1",
-        "codeception/module-asserts": "^1.0.0"
+        "codeception/module-asserts": "^1.0.0",
+        "friendsofphp/php-cs-fixer": "^3.8"
     },
     "scripts": {
+        "format": "vendor/bin/php-cs-fixer fix ./src",
+        "lint": "php -l ./src",
         "test": "vendor/bin/codecept run"
     }
 }
