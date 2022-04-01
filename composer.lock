@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bce20ca6a7adc3a8c86fbb72fdabc617",
+    "content-hash": "ac0c7a661a8e9cb7e40e0841278004ac",
     "packages": [
         {
             "name": "idleberg/vite-manifest",
-            "version": "v0.5.2",
+            "version": "v0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/idleberg/php-vite-manifest.git",
-                "reference": "2e446bcf415d4089738db08f9b5c78903eced72d"
+                "reference": "6dd2db9b62939ee76d570e065a9dfd18f428ae08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/2e446bcf415d4089738db08f9b5c78903eced72d",
-                "reference": "2e446bcf415d4089738db08f9b5c78903eced72d",
+                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/6dd2db9b62939ee76d570e065a9dfd18f428ae08",
+                "reference": "6dd2db9b62939ee76d570e065a9dfd18f428ae08",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,7 @@
             "require-dev": {
                 "codeception/codeception": "^4.1",
                 "codeception/module-asserts": "^1.0.0",
-                "codeception/module-phpbrowser": "^1.0.0"
+                "friendsofphp/php-cs-fixer": "^3.8"
             },
             "type": "library",
             "autoload": {
@@ -53,9 +53,9 @@
             ],
             "support": {
                 "issues": "https://github.com/idleberg/php-vite-manifest/issues",
-                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.5.2"
+                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.5.3"
             },
-            "time": "2022-03-31T23:52:12+00:00"
+            "time": "2022-04-01T22:10:09+00:00"
         },
         {
             "name": "league/uri",
