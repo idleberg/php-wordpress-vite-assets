@@ -1,0 +1,13 @@
+{
+  "demo.ts": {
+    "file": "assets/index.deadbeef.js",
+    "src": "demo.ts",
+    "isEntry": true,
+    "imports": [
+      "_vendor.deadbeef.js"
+    ],
+    "css": [
+      "assets/index.deadbeef.css"
+    ]
+  }
+}

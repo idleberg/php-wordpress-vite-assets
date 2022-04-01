@@ -24,6 +24,13 @@
     ],
     "require": {
         "php": "^8.0",
-        "idleberg/vite-manifest": "^0.5.1"
+        "idleberg/vite-manifest": "^0.5.2"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-asserts": "^1.0.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/codecept run"
     }
 }
