@@ -2,4 +2,5 @@
 vendor/
 
 # project specific
+.php-cs-fixer.cache
 ./test.php
