@@ -49,8 +49,8 @@ class WordpressViteAssets
 
         $entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
-        add_action('wp_head', function() use ($entries) {
-            foreach($entries as $entry) {
+        add_action('wp_head', function () use ($entries) {
+            foreach ($entries as $entry) {
                 $scriptTag = $this->getScriptTag($entry);
 
                 if ($scriptTag) {
@@ -59,17 +59,17 @@ class WordpressViteAssets
             }
         }, $this->getPriority($priority, "scripts"), 1);
 
-        add_action('wp_head', function() use ($entries) {
-            foreach($entries as $entry) {
-                foreach($this->getPreloadTags($entry) as $preloadTag) {
+        add_action('wp_head', function () use ($entries) {
+            foreach ($entries as $entry) {
+                foreach ($this->getPreloadTags($entry) as $preloadTag) {
                     echo $preloadTag . PHP_EOL;
                 }
             }
         }, $this->getPriority($priority, "preloads"), 1);
 
-        add_action('wp_head', function() use ($entries) {
-            foreach($entries as $entry) {
-                foreach($this->getStyleTags($entry) as $styleTag) {
+        add_action('wp_head', function () use ($entries) {
+            foreach ($entries as $entry) {
+                foreach ($this->getStyleTags($entry) as $styleTag) {
                     echo $styleTag . PHP_EOL;
                 }
             }
@@ -101,7 +101,7 @@ class WordpressViteAssets
      */
     public function getStyleTags(string $entrypoint): array
     {
-        return array_map(function($url) {
+        return array_map(function ($url) {
             return "<link rel=\"stylesheet\" href=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\" />";
         }, $this->vm->getStyles($entrypoint));
     }
@@ -114,7 +114,7 @@ class WordpressViteAssets
      */
     public function getPreloadTags(string $entry): array
     {
-        return array_map(function($import) {
+        return array_map(function ($import) {
             return "<link rel=\"modulepreload\" href=\"{$import['url']}\">";
         }, $this->vm->getImports($entry));
     }
