@@ -47,7 +47,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
     public function testGetPreloadtags()
     {
         foreach ($this->viteAssets->getPreloadTags("demo.ts") as $actual) {
-            $expected = "<link rel=\"modulepreload\" href=\"{$this->basePath}/assets/vendor.deadbeef.js\">";
+            $expected = "<link rel=\"xmodulepreload\" href=\"{$this->basePath}/assets/vendor.deadbeef.js\">";
 
             $this->assertEquals($actual, $expected);
         }
