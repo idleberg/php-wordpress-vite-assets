@@ -2,3 +2,4 @@
 vendor/
 
 # project specific
+./test.php
