@@ -2,6 +2,3 @@
 vendor/
 
 # project specific
-assets/
-manifest.json
-test.php
