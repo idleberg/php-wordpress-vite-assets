@@ -80,7 +80,7 @@ Returns the preload tags for an entry in the manifest
 
 #### crossorigin
 
-Toggles `crossorigin` attribute on script and style tags. Can be set to boolean, `anonymous` or `use-credentials`
+Toggles `crossorigin` attribute on script and style tags. Can be `boolean`, `"anonymous"` or `"use-credentials"`
 
 #### integrity
 
