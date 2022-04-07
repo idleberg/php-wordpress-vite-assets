@@ -60,11 +60,11 @@ $viteAssets->addAction($entrypoints, $priorities);
 
 #### `getScriptTag`
 
-Usage: `getScriptTag(string $entrypoint)`
+Usage: `getScriptTag(string $entrypoint, bool $options)`
 
 Returns the script tag for an entry in the manifest
 
-#### `getStyleTags`
+#### `getStyleTags, bool $options`
 
 Usage: `getStyleTags(string $entrypoint)`
 
@@ -75,6 +75,16 @@ Returns the style tags for an entry in the manifest
 Usage: `getPreloadTags(string $entrypoint)`
 
 Returns the preload tags for an entry in the manifest
+
+### Options
+
+#### crossorigin
+
+Toggles `crossorigin` attribute on script and style tags. Can be set to boolean, `anonymous` or `use-credentials`
+
+#### integrity
+
+Toggles `integrity` attribute on script and style tags
 
 ## License
 
