@@ -95,7 +95,12 @@ class WordpressViteAssets
             return null;
         }
 
-        return "<script type=\"module\" src=\"{$url['url']}\" {$this->getAttributes($url, $options)}></script>";
+        $defaultAttributes = [
+            "type=\"module\"",
+            "src=\"{$url['url']}\""
+        ];
+
+        return "<script {$this->getAttributes($url, $defaultAttributes, $options)}></script>";
     }
 
     /**
@@ -107,8 +112,14 @@ class WordpressViteAssets
      */
     public function getStyleTags(string $entrypoint, array $options = []): array
     {
+
         return array_map(function ($url, $options) {
-            return "<link rel=\"stylesheet\" href=\"{$url['url']}\" {$this->getAttributes($url, $options)} />";
+            $defaultAttributes = [
+                "rel=\"stylesheet\"",
+                "href=\"{$url['url']}\""
+            ];
+
+            return "<link {$this->getAttributes($url, $defaultAttributes, $options)} />";
         }, $this->vm->getStyles($entrypoint), [$options]);
     }
 
@@ -121,7 +132,7 @@ class WordpressViteAssets
     public function getPreloadTags(string $entry): array
     {
         return array_map(function ($import) {
-            return "<link rel=\"modulepreload\" href=\"{$import['url']}\">";
+            return "<link rel=\"modulepreload\" href=\"{$import['url']}\" />";
         }, $this->vm->getImports($entry));
     }
 
@@ -150,17 +161,16 @@ class WordpressViteAssets
     * Returns optional attribues for script or link tags
     *
     * @param string $url
+    * @param array $attributes
     * @param array $options
     * @return array
     */
-    private function getAttributes($url, array $options)
+    private function getAttributes($url, array $attributes, array $options)
     {
         ["crossorigin" => $crossorigin, "integrity" => $integrity] = array_merge(
             $this->defaultOptions,
             $options
         );
-
-        $attributes = [];
 
         if ($crossorigin === true) {
             $attributes[] = "crossorigin";
