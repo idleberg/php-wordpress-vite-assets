@@ -155,10 +155,10 @@ class WordpressViteAssets
     */
     private function getAttributes($url, array $options)
     {
-        ["crossorigin" => $crossorigin, "integrity" => $integrity] = [
-            ...$this->defaultOptions,
-            ...$options
-        ];
+        ["crossorigin" => $crossorigin, "integrity" => $integrity] = array_merge(
+            $this->defaultOptions,
+            $options
+        );
 
         $attributes = [];
 
