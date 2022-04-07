@@ -28,7 +28,6 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
     // tests
     public function testGetScriptTag()
     {
-
         $actual = $this->viteAssets->getScriptTag("demo.ts");
         $expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin integrity=\"sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8=\"></script>";
 
@@ -37,7 +36,6 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
     public function testGetScriptTagWithoutOptionalAttributes()
     {
-
         $actual = $this->viteAssets->getScriptTag("demo.ts", [ "crossorigin" => false, "integrity" => false]);
         $expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\"></script>";
 
@@ -46,7 +44,6 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
     public function testGetScriptTagWithoutCrossoriginAttribute()
     {
-
         $actual = $this->viteAssets->getScriptTag("demo.ts", [ "crossorigin" => false]);
         $expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" integrity=\"sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8=\"></script>";
 
@@ -55,7 +52,6 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
     public function testGetScriptTagWithoutIntegrityAttribute()
     {
-
         $actual = $this->viteAssets->getScriptTag("demo.ts", [ "integrity" => false]);
         $expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin></script>";
 
