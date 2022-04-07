@@ -107,9 +107,9 @@ class WordpressViteAssets
      */
     public function getStyleTags(string $entrypoint, array $options = []): array
     {
-        return array_map(function ($url) use ($options) {
+        return array_map(function ($url, $options) {
             return "<link rel=\"stylesheet\" href=\"{$url['url']}\" {$this->getAttributes($url, $options)} />";
-        }, $this->vm->getStyles($entrypoint));
+        }, $this->vm->getStyles($entrypoint), [$options]);
     }
 
     /**
