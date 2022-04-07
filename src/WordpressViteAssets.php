@@ -29,6 +29,10 @@ use Idleberg\ViteManifest\ViteManifest;
 class WordpressViteAssets
 {
     private $vm;
+    private $defaultOptions = [
+        "crossorigin" => true,
+        "integrity" => true
+    ];
 
     public function __construct(string $manifestFile, string $basePath)
     {
@@ -80,9 +84,10 @@ class WordpressViteAssets
      * Returns the script tag for an entry in the manifest
      *
      * @param string $entrypoint
+     * @param array $options
      * @return string
      */
-    public function getScriptTag(string $entrypoint): string
+    public function getScriptTag(string $entrypoint, array $options = []): string
     {
         $url = $this->vm->getEntrypoint($entrypoint);
 
@@ -90,19 +95,20 @@ class WordpressViteAssets
             return null;
         }
 
-        return "<script type=\"module\" src=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\"></script>";
+        return "<script type=\"module\" src=\"{$url['url']}\" {$this->getAttributes($url, $options)}></script>";
     }
 
     /**
      * Returns the style tags for an entry in the manifest
      *
      * @param string $entrypoint
+     * @param array $options
      * @return array
      */
-    public function getStyleTags(string $entrypoint): array
+    public function getStyleTags(string $entrypoint, array $options = []): array
     {
-        return array_map(function ($url) {
-            return "<link rel=\"stylesheet\" href=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\" />";
+        return array_map(function ($url) use ($options) {
+            return "<link rel=\"stylesheet\" href=\"{$url['url']}\" {$this->getAttributes($url, $options)} />";
         }, $this->vm->getStyles($entrypoint));
     }
 
@@ -138,5 +144,34 @@ class WordpressViteAssets
             default:
                 return 0;
         }
+    }
+
+    /**
+    * Returns optional attribues for script or link tags
+    *
+    * @param string $url
+    * @param array $options
+    * @return array
+    */
+    private function getAttributes($url, array $options)
+    {
+        ["crossorigin" => $crossorigin, "integrity" => $integrity] = [
+            ...$this->defaultOptions,
+            ...$options
+        ];
+
+        $attributes = [];
+
+        if ($crossorigin === true) {
+            $attributes[] = "crossorigin";
+        } else if (in_array($crossorigin, ["anonymous", "use-credentials"])) {
+            $attributes[] = "crossorigin=\"{$crossorigin}\"";
+        }
+
+        if($integrity === true) {
+            $attributes[] = "integrity=\"{$url['hash']}\"";
+        }
+
+        return join(" ", $attributes);
     }
 }
