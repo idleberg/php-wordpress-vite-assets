@@ -89,7 +89,8 @@ class WordpressViteAssets
      */
     public function getScriptTag(string $entrypoint, array $options = []): string
     {
-        $url = $this->vm->getEntrypoint($entrypoint);
+        $hash = $options["integrity"] ?? true;
+        $url = $this->vm->getEntrypoint($entrypoint, $hash);
 
         if (!$url) {
             return null;
@@ -112,6 +113,7 @@ class WordpressViteAssets
      */
     public function getStyleTags(string $entrypoint, array $options = []): array
     {
+        $hash = $options["integrity"] ?? true;
 
         return array_map(function ($url, $options) {
             $defaultAttributes = [
@@ -120,7 +122,7 @@ class WordpressViteAssets
             ];
 
             return "<link {$this->getAttributes($url, $defaultAttributes, $options)} />";
-        }, $this->vm->getStyles($entrypoint), [$options]);
+        }, $this->vm->getStyles($entrypoint, $hash), [$options]);
     }
 
     /**
