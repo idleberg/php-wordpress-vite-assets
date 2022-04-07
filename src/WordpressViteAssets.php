@@ -176,11 +176,11 @@ class WordpressViteAssets
 
         if ($crossorigin === true) {
             $attributes[] = "crossorigin";
-        } else if (in_array($crossorigin, ["anonymous", "use-credentials"])) {
+        } elseif (in_array($crossorigin, ["anonymous", "use-credentials"])) {
             $attributes[] = "crossorigin=\"{$crossorigin}\"";
         }
 
-        if($integrity === true) {
+        if ($integrity === true) {
             $attributes[] = "integrity=\"{$url['hash']}\"";
         }
 
