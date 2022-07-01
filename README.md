@@ -15,7 +15,7 @@
 
 To get you going, first instantiate the class exposed by this library
 
-Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri)`
+Usage: `new WordpressViteAssets(string $manifestPath, string $baseUri, string $algorithm = 'sha256')`
 
 **Example**
 

@@ -34,9 +34,9 @@ class WordpressViteAssets
         "integrity" => true
     ];
 
-    public function __construct(string $manifestFile, string $basePath)
+    public function __construct(string $manifestFile, string $basePath, string $algorithm = "sha256")
     {
-        $this->vm = new ViteManifest($manifestFile, $basePath);
+        $this->vm = new ViteManifest($manifestFile, $basePath, $algorithm);
     }
 
     /**
