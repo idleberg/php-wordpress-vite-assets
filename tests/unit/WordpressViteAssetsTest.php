@@ -11,14 +11,13 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
     protected $basePath;
     protected $viteAssets;
+    protected $baseUrl = __DIR__ . "/../_data/";
+    protected $manifest = __DIR__ . "/../_data/manifest.json";
 
     protected function _before()
     {
-        $baseUrl = __DIR__ . "/../_data/";
-        $manifest = __DIR__ . "/../_data/manifest.json";
-
-        $this->basePath = realpath($baseUrl);
-        $this->viteAssets = new WordpressViteAssets($manifest, $baseUrl);
+        $this->basePath = realpath($this->baseUrl);
+        $this->viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl);
     }
 
     protected function _after()
@@ -67,6 +66,39 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
         }
     }
 
+    public function testGetStyletagsSHA256()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha256");
+
+        foreach ($viteAssets->getStyleTags("demo.ts") as $actual) {
+            $expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" crossorigin integrity=\"sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=\" />";
+
+            $this->assertEquals($actual, $expected);
+        }
+    }
+
+    public function testGetStyletagsSHA384()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha384");
+
+        foreach ($viteAssets->getStyleTags("demo.ts") as $actual) {
+            $expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" crossorigin integrity=\"sha384-hRJLv1qN+U3dkKJIw8ANFbwPS/ED0NHZfZU96sK3vRe3evsIbIxjnkoFcJeryuVC\" />";
+
+            $this->assertEquals($actual, $expected);
+        }
+    }
+
+    public function testGetStyletagsSHA512()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha512");
+
+        foreach ($viteAssets->getStyleTags("demo.ts") as $actual) {
+            $expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" crossorigin integrity=\"sha512-vmI3y876ZfoogL2eJuRJy4ToOnrfwPVE7T9yMlhJp5lpSGHZ3ejDNqd7A0QYFlk0/SOugOwB1x0FCWqO95pz4Q==\" />";
+
+            $this->assertEquals($actual, $expected);
+        }
+    }
+
     public function testGetStyletagsWithoutAttributes()
     {
         foreach ($this->viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false, "integrity" => false]) as $actual) {
@@ -80,6 +112,39 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
     {
         foreach ($this->viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false ]) as $actual) {
             $expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" integrity=\"sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=\" />";
+
+            $this->assertEquals($actual, $expected);
+        }
+    }
+
+    public function testGetStyletagsWithoutCrossoriginAttributeSHA256()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha256");
+
+        foreach ($viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false ]) as $actual) {
+            $expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" integrity=\"sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=\" />";
+
+            $this->assertEquals($actual, $expected);
+        }
+    }
+
+    public function testGetStyletagsWithoutCrossoriginAttributeSHA384()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha384");
+
+        foreach ($viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false ]) as $actual) {
+            $expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" integrity=\"sha384-hRJLv1qN+U3dkKJIw8ANFbwPS/ED0NHZfZU96sK3vRe3evsIbIxjnkoFcJeryuVC\" />";
+
+            $this->assertEquals($actual, $expected);
+        }
+    }
+
+    public function testGetStyletagsWithoutCrossoriginAttributeSHA512()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha512");
+
+        foreach ($viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false ]) as $actual) {
+            $expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" integrity=\"sha512-vmI3y876ZfoogL2eJuRJy4ToOnrfwPVE7T9yMlhJp5lpSGHZ3ejDNqd7A0QYFlk0/SOugOwB1x0FCWqO95pz4Q==\" />";
 
             $this->assertEquals($actual, $expected);
         }
