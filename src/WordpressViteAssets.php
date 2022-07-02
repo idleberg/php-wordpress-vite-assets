@@ -36,6 +36,7 @@ class WordpressViteAssets
 
     public function __construct(string $manifestFile, string $basePath, string $algorithm = "sha256")
     {
+        // Let ViteManifest handle errors
         $this->vm = new ViteManifest($manifestFile, $basePath, $algorithm);
     }
 
