@@ -33,6 +33,36 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
         $this->assertEquals($actual, $expected);
     }
 
+    public function testGetScriptTagSHA256()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha256");
+
+        $actual = $viteAssets->getScriptTag("demo.ts");
+        $expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin integrity=\"sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8=\"></script>";
+
+        $this->assertEquals($actual, $expected);
+    }
+
+    public function testGetScriptTagSHA384()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha384");
+
+        $actual = $viteAssets->getScriptTag("demo.ts");
+        $expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin integrity=\"sha384-fWetO954Htoz6cSa6ZLx231UagP8VTXlwaO1g/JisfA9TLZnHPlgPBUwsqrWHjg0\"></script>";
+
+        $this->assertEquals($actual, $expected);
+    }
+
+    public function testGetScriptTagSHA512()
+    {
+        $viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha512");
+
+        $actual = $viteAssets->getScriptTag("demo.ts");
+        $expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin integrity=\"sha512-yD2Vb8LCDxC5ingFUTEa50J7EaqoK4xJzwimk2+7PPM9jczPfTDHngkduhYar/pz4dCW7qWIhm0fXFDXm1lL/A==\"></script>";
+
+        $this->assertEquals($actual, $expected);
+    }
+
     public function testGetScriptTagWithoutOptionalAttributes()
     {
         $actual = $this->viteAssets->getScriptTag("demo.ts", [ "crossorigin" => false, "integrity" => false]);
