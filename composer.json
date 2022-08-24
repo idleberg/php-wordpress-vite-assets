@@ -24,7 +24,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "idleberg/vite-manifest": "^0.7.0"
+        "idleberg/vite-manifest": "^0.7.1"
     },
     "require-dev": {
         "codeception/codeception": "^4.1",
