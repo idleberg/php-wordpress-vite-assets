@@ -24,12 +24,12 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "idleberg/vite-manifest": "^0.7.1"
+        "idleberg/vite-manifest": "^0.7.2"
     },
     "require-dev": {
-        "codeception/codeception": "^4.1",
-        "codeception/module-asserts": "^1.0.0",
-        "friendsofphp/php-cs-fixer": "^3.8"
+        "codeception/codeception": "^4.2",
+        "codeception/module-asserts": "^2.0.1",
+        "friendsofphp/php-cs-fixer": "^3.11"
     },
     "scripts": {
         "format": "vendor/bin/php-cs-fixer fix ./src",
