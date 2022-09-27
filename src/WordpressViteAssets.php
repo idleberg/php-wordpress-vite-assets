@@ -94,7 +94,7 @@ class WordpressViteAssets
         $url = $this->vm->getEntrypoint($entrypoint, $hash);
 
         if (!$url) {
-            return null;
+            return "";
         }
 
         $defaultAttributes = [
