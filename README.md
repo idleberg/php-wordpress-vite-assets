@@ -82,9 +82,13 @@ Returns the preload tags for an entry in the manifest
 
 #### crossorigin
 
-Toggles `crossorigin` attribute on script and style tags. Can be `boolean`, `"anonymous"` or `"use-credentials"`
+Type: `boolean | "anonymous" | "use-credentials"`
+
+Toggles `crossorigin` attribute on script and style tags
 
 #### integrity
+
+Type: `boolean`
 
 Toggles `integrity` attribute on script and style tags
 
