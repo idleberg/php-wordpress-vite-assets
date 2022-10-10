@@ -109,7 +109,7 @@ class WordpressViteAssets
      * Returns the style tags for an entry in the manifest
      *
      * @param string $entrypoint
-     * @param array $options
+     * @param array (optional) $options
      * @return array
      */
     public function getStyleTags(string $entrypoint, array $options = []): array
