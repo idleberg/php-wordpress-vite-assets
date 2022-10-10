@@ -62,13 +62,13 @@ $viteAssets->addAction($entrypoints, $priorities);
 
 #### `getScriptTag`
 
-Usage: `getScriptTag(string $entrypoint, bool $options)`
+Usage: `getScriptTag(string $entrypoint, array $options)`
 
 Returns the script tag for an entry in the manifest
 
-#### `getStyleTags, bool $options`
+#### `getStyleTags`
 
-Usage: `getStyleTags(string $entrypoint)`
+Usage: `getStyleTags(string $entrypoint, array $options)`
 
 Returns the style tags for an entry in the manifest
 

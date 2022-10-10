@@ -85,7 +85,7 @@ class WordpressViteAssets
      * Returns the script tag for an entry in the manifest
      *
      * @param string $entrypoint
-     * @param array $options
+     * @param array (optional) $options
      * @return string
      */
     public function getScriptTag(string $entrypoint, array $options = []): string
