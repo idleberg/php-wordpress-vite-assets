@@ -38,7 +38,7 @@ $viteAssets->addAction($entryPoint);
 
 #### `addAction`
 
-Usage: `addAction(array|string $entrypoints, array|int $priority = 0, string action = 'wp_head')`
+Usage: `addAction(array|string $entrypoints, array|int $priority = 0, string $action = 'wp_head')`
 
 Writes tags for entries specified in the manifest to the page header
 
