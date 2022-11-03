@@ -2,7 +2,7 @@ root = true
 
 [*]
 charset = utf-8
-indent_size = 2
+indent_size = 4
 indent_style = tab
 insert_final_newline = true
 trim_trailing_whitespace = true
@@ -13,7 +13,6 @@ block_comment = *
 block_comment_end = */
 
 [*.{yml,yaml}]
-indent_size = 2
 indent_style = space
 
 [*.md]
