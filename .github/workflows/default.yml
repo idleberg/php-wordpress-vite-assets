@@ -1,8 +1,16 @@
 name: CI
 
 on:
-- push
-- pull_request
+  push:
+    paths:
+    - 'src/**'
+    - 'tests/**'
+    - 'composer.lock'
+  pull_request:
+    paths:
+    - 'src/**'
+    - 'tests/**'
+    - 'composer.lock'
 
 jobs:
   run:
