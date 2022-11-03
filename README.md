@@ -26,7 +26,7 @@ new WordpressViteAssets(string $manifestPath, string $baseUri, string $algorithm
 
 use Idleberg\WordpressViteAssets\WordpressViteAssets;
 
-$baseUrl = get_stylesheet_directory();
+$baseUrl = get_stylesheet_directory_uri();
 $manifest = "path/to/manifest.json";
 $entryPoint = "index.ts";
 
