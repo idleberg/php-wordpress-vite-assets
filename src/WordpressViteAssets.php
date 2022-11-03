@@ -55,7 +55,7 @@ class WordpressViteAssets
         }
 
         if (!has_action($action)) {
-            throw new \Exception("The hook '$action' could not be found");
+            throw new \Exception("The action '$action' could not be found");
         }
 
         $entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
