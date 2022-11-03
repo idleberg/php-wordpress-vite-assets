@@ -44,17 +44,23 @@ class WordpressViteAssets
      * Writes tags for entries specified in the manifest to the page header
      *
      * @param array|string $entrypoint
+     * @param int $priority
+     * @param string $action
      * @return void
      */
-    public function addAction(string $entrypoint, int $priority = 0): void
+    public function addAction(string $entrypoint, int $priority = 0, string $action = 'wp_head'): void
     {
         if (!function_exists('add_action')) {
             throw new \Exception("WordPress function add_action() not found");
         }
 
+        if (!has_action($action)) {
+            throw new \Exception("The hook '$action' could not be found");
+        }
+
         $entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
-        add_action('wp_head', function () use ($entries) {
+        add_action($action, function () use ($entries) {
             foreach ($entries as $entry) {
                 $scriptTag = $this->getScriptTag($entry);
 
@@ -64,7 +70,7 @@ class WordpressViteAssets
             }
         }, $this->getPriority($priority, "scripts"), 1);
 
-        add_action('wp_head', function () use ($entries) {
+        add_action($action, function () use ($entries) {
             foreach ($entries as $entry) {
                 foreach ($this->getPreloadTags($entry) as $preloadTag) {
                     echo $preloadTag . PHP_EOL;
@@ -72,7 +78,7 @@ class WordpressViteAssets
             }
         }, $this->getPriority($priority, "preloads"), 1);
 
-        add_action('wp_head', function () use ($entries) {
+        add_action($action, function () use ($entries) {
             foreach ($entries as $entry) {
                 foreach ($this->getStyleTags($entry) as $styleTag) {
                     echo $styleTag . PHP_EOL;

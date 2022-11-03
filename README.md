@@ -38,7 +38,7 @@ $viteAssets->addAction($entryPoint);
 
 #### `addAction`
 
-Usage: `addAction(array|string $entrypoints, array|int $priority = 0)`
+Usage: `addAction(array|string $entrypoints, array|int $priority = 0, string action = 'wp_head')`
 
 Writes tags for entries specified in the manifest to the page header
 
@@ -59,6 +59,8 @@ $priorities = [
 
 $viteAssets->addAction($entrypoints, $priorities);
 ```
+
+:warning: For plugins built with Vite, you will likely need to change the default action to `admin_head`
 
 #### `getScriptTag`
 
