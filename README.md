@@ -51,6 +51,8 @@ The priority argument allows granular control when provided as an array
 **Example**
 
 ```php
+// functions.php
+
 $priorities = [
     "scripts"  => 10,
     "preloads" => 0,
@@ -61,6 +63,14 @@ $viteAssets->addAction($entrypoints, $priorities);
 ```
 
 :warning: For WordPress plugins built with Vite, you will likely have to change the default action to `admin_head`
+
+**Example**
+
+```php
+// plugin.php
+
+$viteAssets->addAction($entrypoints, 0, 'admin_head');
+```
 
 #### `getScriptTag`
 
