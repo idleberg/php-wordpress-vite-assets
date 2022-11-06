@@ -48,7 +48,7 @@ class WordpressViteAssets
 	 * @param string $action
 	 * @return void
 	 */
-	public function addAction(string $entrypoint, int $priority = 0, string $action = 'wp_head'): void
+	public function addAction(array|string $entrypoint, int $priority = 0, string $action = 'wp_head'): void
 	{
 		if (!function_exists('add_action')) {
 			throw new \Exception("WordPress function add_action() not found");
