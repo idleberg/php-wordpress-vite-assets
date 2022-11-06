@@ -28,115 +28,169 @@ use Idleberg\ViteManifest\ViteManifest;
 
 class WordpressViteAssets
 {
-    private $vm;
+	private $vm;
+	private $defaultOptions = [
+		"crossorigin" => true,
+		"integrity" => true
+	];
 
-    public function __construct(string $manifestFile, string $basePath)
-    {
-        $this->vm = new ViteManifest($manifestFile, $basePath);
-    }
+	public function __construct(string $manifestFile, string $basePath, string $algorithm = "sha256")
+	{
+		// Let ViteManifest handle errors
+		$this->vm = new ViteManifest($manifestFile, $basePath, $algorithm);
+	}
 
-    /**
-     * Writes tags for entries specified in the manifest to the page header
-     *
-     * @param array|string $entrypoint
-     * @return void
-     */
-    public function addAction(array|string $entrypoint, int $priority = 0): void
-    {
-        if (!function_exists('add_action')) {
-            throw new \Exception("WordPress function add_action() not found");
-        }
+	/**
+	 * Writes tags for entries specified in the manifest to the page header
+	 *
+	 * @param array|string $entrypoint
+	 * @param int $priority
+	 * @param string $action
+	 * @return void
+	 */
+	public function addAction(string $entrypoint, int $priority = 0, string $action = 'wp_head'): void
+	{
+		if (!function_exists('add_action')) {
+			throw new \Exception("WordPress function add_action() not found");
+		}
 
-        $entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
+		if (!has_action($action)) {
+			throw new \Exception("The hook '$action' could not be found");
+		}
 
-        add_action('wp_head', function() use ($entries) {
-            foreach($entries as $entry) {
-                $scriptTag = $this->getScriptTag($entry);
+		$entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
-                if ($scriptTag) {
-                    echo $scriptTag . PHP_EOL;
-                }
-            }
-        }, $this->getPriority($priority, "scripts"), 1);
+		add_action($action, function () use ($entries) {
+			foreach ($entries as $entry) {
+				$scriptTag = $this->getScriptTag($entry);
 
-        add_action('wp_head', function() use ($entries) {
-            foreach($entries as $entry) {
-                foreach($this->getPreloadTags($entry) as $preloadTag) {
-                    echo $preloadTag . PHP_EOL;
-                }
-            }
-        }, $this->getPriority($priority, "preloads"), 1);
+				if ($scriptTag) {
+					echo $scriptTag . PHP_EOL;
+				}
+			}
+		}, $this->getPriority($priority, "scripts"), 1);
 
-        add_action('wp_head', function() use ($entries) {
-            foreach($entries as $entry) {
-                foreach($this->getStyleTags($entry) as $styleTag) {
-                    echo $styleTag . PHP_EOL;
-                }
-            }
-        }, $this->getPriority($priority, "styles"), 1);
-    }
+		add_action($action, function () use ($entries) {
+			foreach ($entries as $entry) {
+				foreach ($this->getPreloadTags($entry) as $preloadTag) {
+					echo $preloadTag . PHP_EOL;
+				}
+			}
+		}, $this->getPriority($priority, "preloads"), 1);
 
-    /**
-     * Returns the script tag for an entry in the manifest
-     *
-     * @param string $entrypoint
-     * @return string
-     */
-    public function getScriptTag(string $entrypoint): string|null
-    {
-        $url = $this->vm->getEntrypoint($entrypoint);
+		add_action($action, function () use ($entries) {
+			foreach ($entries as $entry) {
+				foreach ($this->getStyleTags($entry) as $styleTag) {
+					echo $styleTag . PHP_EOL;
+				}
+			}
+		}, $this->getPriority($priority, "styles"), 1);
+	}
 
-        if (!$url) {
-            return null;
-        }
+	/**
+	 * Returns the script tag for an entry in the manifest
+	 *
+	 * @param string $entrypoint
+	 * @param array (optional) $options
+	 * @return string
+	 */
+	public function getScriptTag(string $entrypoint, array $options = []): string
+	{
+		$hash = $options["integrity"] ?? true;
+		$url = $this->vm->getEntrypoint($entrypoint, $hash);
 
-        return "<script type=\"module\" src=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\"></script>";
-    }
+		if (!$url) {
+			return "";
+		}
 
-    /**
-     * Returns the style tags for an entry in the manifest
-     *
-     * @param string $entrypoint
-     * @return array
-     */
-    public function getStyleTags(string $entrypoint): array
-    {
-        return array_map(function($url) {
-            return "<link rel=\"stylesheet\" href=\"{$url['url']}\" crossorigin integrity=\"{$url['hash']}\" />";
-        }, $this->vm->getStyles($entrypoint));
-    }
+		$defaultAttributes = [
+			"type=\"module\"",
+			"src=\"{$url['url']}\""
+		];
 
-    /**
-     * Returns the preload tags for an entry in the manifest
-     *
-     * @param string $entry
-     * @return array
-     */
-    public function getPreloadTags(string $entry): array
-    {
-        return array_map(function($import) {
-            return "<link rel=\"modulepreload\" href=\"{$import['url']}\">";
-        }, $this->vm->getImports($entry));
-    }
+		return "<script {$this->getAttributes($url, $defaultAttributes, $options)}></script>";
+	}
 
-    /**
-     * Returns priority for an action
-     *
-     * @param array|int $priority
-     * @param string $key
-     * @return int
-     */
-    private function getPriority(array|int $priority, string $key)
-    {
-        switch (true) {
-            case is_integer($priority):
-                return $priority;
+	/**
+	 * Returns the style tags for an entry in the manifest
+	 *
+	 * @param string $entrypoint
+	 * @param array (optional) $options
+	 * @return array
+	 */
+	public function getStyleTags(string $entrypoint, array $options = []): array
+	{
+		$hash = $options["integrity"] ?? true;
 
-            case is_array($priority) && is_integer($priority[$key]):
-                return $priority[$key];
+		return array_map(function ($url, $options) {
+			$defaultAttributes = [
+				"rel=\"stylesheet\"",
+				"href=\"{$url['url']}\""
+			];
 
-            default:
-                return 0;
-        }
-    }
+			return "<link {$this->getAttributes($url, $defaultAttributes, $options)} />";
+		}, $this->vm->getStyles($entrypoint, $hash), [$options]);
+	}
+
+	/**
+	 * Returns the preload tags for an entry in the manifest
+	 *
+	 * @param string $entry
+	 * @return array
+	 */
+	public function getPreloadTags(string $entry): array
+	{
+		return array_map(function ($import) {
+			return "<link rel=\"modulepreload\" href=\"{$import['url']}\" />";
+		}, $this->vm->getImports($entry));
+	}
+
+	/**
+	 * Returns priority for an action
+	 *
+	 * @param array|int $priority
+	 * @param string $key
+	 * @return int
+	 */
+	private function getPriority(int $priority, string $key)
+	{
+		switch (true) {
+			case is_integer($priority):
+				return $priority;
+
+			case is_array($priority) && is_integer($priority[$key]):
+				return $priority[$key];
+
+			default:
+				return 0;
+		}
+	}
+
+	/**
+	 * Returns optional attribues for script or link tags
+	 *
+	 * @param string $url
+	 * @param array $attributes
+	 * @param array $options
+	 * @return array
+	 */
+	private function getAttributes($url, array $attributes, array $options)
+	{
+		["crossorigin" => $crossorigin, "integrity" => $integrity] = array_merge(
+			$this->defaultOptions,
+			$options
+		);
+
+		if ($crossorigin === true) {
+			$attributes[] = "crossorigin";
+		} elseif (in_array($crossorigin, ["anonymous", "use-credentials"])) {
+			$attributes[] = "crossorigin=\"{$crossorigin}\"";
+		}
+
+		if ($integrity === true) {
+			$attributes[] = "integrity=\"{$url['hash']}\"";
+		}
+
+		return join(" ", $attributes);
+	}
 }

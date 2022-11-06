@@ -4,13 +4,13 @@
     "src": "demo.ts",
     "isEntry": true,
     "imports": [
-      "_vendor.deadbeef.js"
+      "vendor.deadbeef.js"
     ],
     "css": [
       "assets/index.deadbeef.css"
     ]
   },
-  "_vendor.deadbeef.js": {
+  "vendor.deadbeef.js": {
     "file": "assets/vendor.deadbeef.js"
   }
 }

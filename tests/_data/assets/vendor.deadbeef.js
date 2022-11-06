@@ -1,1 +1,1 @@
-console.log('deadbeef');
+console.log('vendor:deadbeef');

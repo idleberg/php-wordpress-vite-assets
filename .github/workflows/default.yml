@@ -1,16 +1,25 @@
 name: CI
 
 on:
-- push
-- pull_request
+  push:
+    paths:
+    - 'src/**'
+    - 'tests/**'
+    - 'composer.lock'
+  pull_request:
+    paths:
+    - 'src/**'
+    - 'tests/**'
+    - 'composer.lock'
 
 jobs:
   run:
     runs-on: ${{ matrix.operating-system }}
     strategy:
+      fail-fast: false
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['8.0', '8.1']
+        php-versions: ['7.4', '8.0', '8.1']
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     env:
       extensions: intl, pcov
@@ -42,6 +51,9 @@ jobs:
 
     - name: Dependencies
       run: composer update
+
+    - name: Lint
+      run: composer run lint
 
     - name: Test
       run: composer run test
