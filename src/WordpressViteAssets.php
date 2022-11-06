@@ -60,7 +60,7 @@ class WordpressViteAssets
 
 		$entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
-		add_action($action, function () use ($entries) {
+		add_action($action, function() use ($entries) {
 			foreach ($entries as $entry) {
 				$scriptTag = $this->getScriptTag($entry);
 
@@ -70,7 +70,7 @@ class WordpressViteAssets
 			}
 		}, $this->getPriority($priority, "scripts"), 1);
 
-		add_action($action, function () use ($entries) {
+		add_action($action, function() use ($entries) {
 			foreach ($entries as $entry) {
 				foreach ($this->getPreloadTags($entry) as $preloadTag) {
 					echo $preloadTag . PHP_EOL;
@@ -78,7 +78,7 @@ class WordpressViteAssets
 			}
 		}, $this->getPriority($priority, "preloads"), 1);
 
-		add_action($action, function () use ($entries) {
+		add_action($action, function() use ($entries) {
 			foreach ($entries as $entry) {
 				foreach ($this->getStyleTags($entry) as $styleTag) {
 					echo $styleTag . PHP_EOL;
@@ -122,7 +122,7 @@ class WordpressViteAssets
 	{
 		$hash = $options["integrity"] ?? true;
 
-		return array_map(function ($url, $options) {
+		return array_map(function($url, $options) {
 			$defaultAttributes = [
 				"rel=\"stylesheet\"",
 				"href=\"{$url['url']}\""
@@ -140,7 +140,7 @@ class WordpressViteAssets
 	 */
 	public function getPreloadTags(string $entry): array
 	{
-		return array_map(function ($import) {
+		return array_map(function($import) {
 			return "<link rel=\"modulepreload\" href=\"{$import['url']}\" />";
 		}, $this->vm->getImports($entry));
 	}
