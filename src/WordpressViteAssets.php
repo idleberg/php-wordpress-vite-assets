@@ -167,13 +167,13 @@ class WordpressViteAssets
 	}
 
 	/**
-	* Returns optional attribues for script or link tags
-	*
-	* @param string $url
-	* @param array $attributes
-	* @param array $options
-	* @return array
-	*/
+	 * Returns optional attribues for script or link tags
+	 *
+	 * @param string $url
+	 * @param array $attributes
+	 * @param array $options
+	 * @return array
+	 */
 	private function getAttributes($url, array $attributes, array $options)
 	{
 		["crossorigin" => $crossorigin, "integrity" => $integrity] = array_merge(
