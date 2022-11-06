@@ -59,7 +59,7 @@ $priorities = [
     "styles"   => 20
 ];
 
-$viteAssets->addAction($entrypoints, $priorities);
+$viteAssets->addAction("index.ts", $priorities);
 ```
 
 :warning: For WordPress plugins built with Vite, you will likely have to change the default action to `admin_head`
