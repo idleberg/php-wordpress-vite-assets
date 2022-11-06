@@ -69,7 +69,7 @@ $viteAssets->addAction($entrypoints, $priorities);
 ```php
 // plugin.php
 
-$viteAssets->addAction($entrypoints, 0, 'admin_head');
+$viteAssets->addAction("index.ts", 0", "admin_head");
 ```
 
 #### `getScriptTag`
