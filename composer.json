@@ -27,8 +27,8 @@
         "idleberg/vite-manifest": "^0.7.2"
     },
     "require-dev": {
-        "codeception/codeception": "^4.2",
-        "codeception/module-asserts": "^2.0.1",
+        "codeception/codeception": "^5.0.4",
+        "codeception/module-asserts": "^3.0.0",
         "friendsofphp/php-cs-fixer": "^3.11"
     },
     "scripts": {
