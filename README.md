@@ -10,18 +10,18 @@
 
 **Table of contents**
 
-- [Wordpress Vite Assets](#wordpress-vite-assets)
-	- [Installation](#installation)
-	- [Usage](#usage)
-		- [Methods](#methods)
-			- [`auto()`](#auto)
-			- [`getScriptTag()`](#getscripttag)
-			- [`getStyleTags`](#getstyletags)
-			- [`getPreloadTags()`](#getpreloadtags)
-		- [Options](#options)
-			- [`crossorigin`](#crossorigin)
-			- [`integrity`](#integrity)
-	- [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+	- [Methods](#methods)
+		- [`auto()`](#auto)
+		- [`getScriptTag()`](#getscripttag)
+		- [`getStyleTags`](#getstyletags)
+		- [`getPreloadTags()`](#getpreloadtags)
+	- [Options](#options)
+		- [`crossorigin`](#crossorigin)
+		- [`integrity`](#integrity)
+- [License](#license)
+	
 ## Installation
 
 `composer require idleberg/wordpress-vite-assets`
