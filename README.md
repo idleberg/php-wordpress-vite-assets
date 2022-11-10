@@ -36,7 +36,7 @@ $viteAssets->auto($entryPoint);
 
 ### Methods
 
-#### `auto`
+#### `auto()`
 
 Usage: `auto(array|string $entrypoints, array|int $priority = 0, string $action = 'wp_head')`
 
@@ -72,7 +72,7 @@ $viteAssets->auto("index.ts", $priorities);
 $viteAssets->auto("index.ts", 0, "admin_head");
 ```
 
-#### `getScriptTag`
+#### `getScriptTag()`
 
 Usage: `getScriptTag(string $entrypoint, array $options)`
 
@@ -84,7 +84,7 @@ Usage: `getStyleTags(string $entrypoint, array $options)`
 
 Returns the style tags for an entry in the manifest
 
-#### `getPreloadTags`
+#### `getPreloadTags()`
 
 Usage: `getPreloadTags(string $entrypoint)`
 
