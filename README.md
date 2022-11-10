@@ -7,6 +7,21 @@
 [![Packagist](https://flat.badgen.net/packagist/php/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
 [![CI](https://img.shields.io/github/workflow/status/idleberg/php-wordpress-vite-assets/CI?style=flat-square)](https://github.com/idleberg/php-wordpress-vite-assets/actions)
 
+
+**Table of contents**
+
+- [Wordpress Vite Assets](#wordpress-vite-assets)
+	- [Installation](#installation)
+	- [Usage](#usage)
+		- [Methods](#methods)
+			- [`auto()`](#auto)
+			- [`getScriptTag()`](#getscripttag)
+			- [`getStyleTags`](#getstyletags)
+			- [`getPreloadTags()`](#getpreloadtags)
+		- [Options](#options)
+			- [`crossorigin`](#crossorigin)
+			- [`integrity`](#integrity)
+	- [License](#license)
 ## Installation
 
 `composer require idleberg/wordpress-vite-assets`
@@ -35,7 +50,6 @@ $viteAssets->auto($entryPoint);
 ```
 
 ### Methods
-
 #### `auto()`
 
 Usage: `auto(array|string $entrypoints, array|int $priority = 0, string $action = 'wp_head')`
