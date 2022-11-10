@@ -31,14 +31,14 @@ $manifest = "path/to/manifest.json";
 $entryPoint = "index.ts";
 
 $viteAssets = new WordpressViteAssets($manifest, $baseUrl);
-$viteAssets->addAction($entryPoint);
+$viteAssets->auto($entryPoint);
 ```
 
 ### Methods
 
-#### `addAction`
+#### `auto`
 
-Usage: `addAction(array|string $entrypoints, array|int $priority = 0, string $action = 'wp_head')`
+Usage: `auto(array|string $entrypoints, array|int $priority = 0, string $action = 'wp_head')`
 
 Writes tags for entries specified in the manifest to the page header
 
@@ -59,7 +59,7 @@ $priorities = [
     "styles"   => 20
 ];
 
-$viteAssets->addAction("index.ts", $priorities);
+$viteAssets->auto("index.ts", $priorities);
 ```
 
 :warning: For WordPress plugins built with Vite, you will likely have to change the default action to `admin_head`
@@ -69,7 +69,7 @@ $viteAssets->addAction("index.ts", $priorities);
 ```php
 // plugin.php
 
-$viteAssets->addAction("index.ts", 0, "admin_head");
+$viteAssets->auto("index.ts", 0, "admin_head");
 ```
 
 #### `getScriptTag`

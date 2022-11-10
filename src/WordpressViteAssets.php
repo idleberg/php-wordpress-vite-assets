@@ -41,14 +41,14 @@ class WordpressViteAssets
 	}
 
 	/**
-	 * Writes tags for entries specified in the manifest to the page header
+	 * Automatically writes tags for entries specified in the manifest to the page header
 	 *
 	 * @param array|string $entrypoint
 	 * @param int $priority
 	 * @param string $action
 	 * @return void
 	 */
-	public function addAction(array|string $entrypoint, int $priority = 0, string $action = 'wp_head'): void
+	public function auto(array|string $entrypoint, int $priority = 0, string $action = 'wp_head'): void
 	{
 		if (!function_exists('add_action')) {
 			throw new \Exception("WordPress function add_action() not found");
