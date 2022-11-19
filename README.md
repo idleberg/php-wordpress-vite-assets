@@ -60,7 +60,7 @@ Injects tags for entries specified in the manifest to the page header
 - preloads for imported scripts
 - style tags
 
-The priority argument allows granular control when provided as an array
+The priority argument allows granular control when provided as an array:
 
 **Example**
 
@@ -76,7 +76,7 @@ $priorities = [
 $viteAssets->inject("index.ts", $priorities);
 ```
 
-The method automatically detects whether your Vite app runs in frontend or backend context, but you can override this behaviour by passing a custom action
+The method automatically detects whether your Vite app runs in frontend or backend context, but you can override this behaviour by passing a custom action:
 
 **Example**
 
