@@ -45,13 +45,17 @@ class WordpressViteAssets
 	 *
 	 * @param array|string $entrypoint
 	 * @param int $priority
-	 * @param string $action
+	 * @param null|string $action
 	 * @return void
 	 */
-	public function auto(array|string $entrypoint, int $priority = 0, string $action = 'wp_head'): void
+	public function auto(array|string $entrypoint, int $priority = 0, null|string $action = null): void
 	{
 		if (!function_exists('add_action')) {
 			throw new \Exception("WordPress function add_action() not found");
+		}
+
+		if (!$action || !is_string($action)) {
+			$action = is_admin() ? 'admin_head' : 'wp_head';
 		}
 
 		if (!has_action($action)) {

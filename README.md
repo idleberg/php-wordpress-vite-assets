@@ -10,17 +10,18 @@
 
 **Table of contents**
 
-- [Installation](#installation)
-- [Usage](#usage)
-	- [Methods](#methods)
-		- [`auto()`](#auto)
-		- [`getScriptTag()`](#getscripttag)
-		- [`getStyleTags`](#getstyletags)
-		- [`getPreloadTags()`](#getpreloadtags)
-	- [Options](#options)
-		- [`crossorigin`](#crossorigin)
-		- [`integrity`](#integrity)
-- [License](#license)
+- [Wordpress Vite Assets](#wordpress-vite-assets)
+	- [Installation](#installation)
+	- [Usage](#usage)
+		- [Methods](#methods)
+			- [`auto()`](#auto)
+			- [`getScriptTag()`](#getscripttag)
+			- [`getStyleTags`](#getstyletags)
+			- [`getPreloadTags()`](#getpreloadtags)
+		- [Options](#options)
+			- [`crossorigin`](#crossorigin)
+			- [`integrity`](#integrity)
+	- [License](#license)
 	
 ## Installation
 
@@ -52,7 +53,7 @@ $viteAssets->auto($entryPoint);
 ### Methods
 #### `auto()`
 
-Usage: `auto(array|string $entrypoints, array|int $priority = 0, string $action = 'wp_head')`
+Usage: `auto(array|string $entrypoints, array|int $priority = 0, null|string $action = null)`
 
 Writes tags for entries specified in the manifest to the page header
 
