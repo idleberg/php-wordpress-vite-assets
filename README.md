@@ -14,7 +14,7 @@
 	- [Installation](#installation)
 	- [Usage](#usage)
 		- [Methods](#methods)
-			- [`auto()`](#auto)
+			- [`inject()`](#inject)
 			- [`getScriptTag()`](#getscripttag)
 			- [`getStyleTags`](#getstyletags)
 			- [`getPreloadTags()`](#getpreloadtags)
@@ -51,11 +51,11 @@ $viteAssets->auto($entryPoint);
 ```
 
 ### Methods
-#### `auto()`
+#### `inject()`
 
-Usage: `auto(array|string $entrypoints, array|int $priority = 0, null|string $action = null)`
+Usage: `inject(array|string $entrypoints, array|int $priority = 0, null|string $action = null)`
 
-Writes tags for entries specified in the manifest to the page header
+Injects tags for entries specified in the manifest to the page header
 
 - script entrypoint
 - preloads for imported scripts
@@ -74,7 +74,7 @@ $priorities = [
     "styles"   => 20
 ];
 
-$viteAssets->auto("index.ts", $priorities);
+$viteAssets->inject("index.ts", $priorities);
 ```
 
 The method automatically detects whether your Vite app runs in frontend or backend context, but you can override this behaviour by passing a custom action
@@ -84,7 +84,7 @@ The method automatically detects whether your Vite app runs in frontend or backe
 ```php
 // plugin.php
 
-$viteAssets->auto("index.ts", 0, "admin_head");
+$viteAssets->inject("index.ts", 0, "admin_head");
 ```
 
 :warning: In most cases, you don't need to specify a custom action!
