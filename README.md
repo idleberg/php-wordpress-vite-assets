@@ -77,7 +77,7 @@ $priorities = [
 $viteAssets->auto("index.ts", $priorities);
 ```
 
-The method automatically detects whether the Vite app runs in frontend or backend contest, but you can override this behaviour by passing a custom action. In most cases, you probably don't want to do this.
+The method automatically detects whether your Vite app runs in frontend or backend context, but you can override this behaviour by passing a custom action. In most cases, you probably don't want to do this.
 
 **Example**
 
