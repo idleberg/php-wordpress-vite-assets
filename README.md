@@ -53,7 +53,7 @@ $viteAssets->auto($entryPoint);
 ### Methods
 #### `inject()`
 
-Usage: `inject(array|string $entrypoints, array|int $priority = 0, null|string $action = null)`
+Usage: `inject(array|string $entrypoints, array|int $priority = 0, string $action = null)`
 
 Injects tags for entries specified in the manifest to the page header
 

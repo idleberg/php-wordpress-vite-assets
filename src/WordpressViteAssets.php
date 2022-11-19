@@ -44,11 +44,11 @@ class WordpressViteAssets
 	 * Injects tags for entries specified in the manifest to the page header
 	 *
 	 * @param array|string $entrypoint
-	 * @param int $priority
-	 * @param null|string $action
+	 * @param int $priority (optional)
+	 * @param string $action (optional)
 	 * @return void
 	 */
-	public function inject(array|string $entrypoint, int $priority = 0, null|string $action = null): void
+	public function inject(array|string $entrypoint, int $priority = 0, string $action = null): void
 	{
 		if (!function_exists('add_action')) {
 			throw new \Exception("WordPress function add_action() not found");
@@ -95,7 +95,7 @@ class WordpressViteAssets
 	 * Returns the script tag for an entry in the manifest
 	 *
 	 * @param string $entrypoint
-	 * @param array (optional) $options
+	 * @param array $options (optional)
 	 * @return string
 	 */
 	public function getScriptTag(string $entrypoint, array $options = []): string
@@ -119,7 +119,7 @@ class WordpressViteAssets
 	 * Returns the style tags for an entry in the manifest
 	 *
 	 * @param string $entrypoint
-	 * @param array (optional) $options
+	 * @param array $options (optional)
 	 * @return array
 	 */
 	public function getStyleTags(string $entrypoint, array $options = []): array
