@@ -54,7 +54,7 @@ class WordpressViteAssets
 			throw new \Exception("WordPress function add_action() not found");
 		}
 
-		if (!$action || !is_string($action)) {
+		if ($action === null || !is_string($action)) {
 			$action = is_admin() ? 'admin_head' : 'wp_head';
 		}
 
