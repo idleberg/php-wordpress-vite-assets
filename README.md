@@ -10,18 +10,17 @@
 
 **Table of contents**
 
-- [Wordpress Vite Assets](#wordpress-vite-assets)
-	- [Installation](#installation)
-	- [Usage](#usage)
-		- [Methods](#methods)
-			- [`inject()`](#inject)
-			- [`getScriptTag()`](#getscripttag)
-			- [`getStyleTags()`](#getstyletags)
-			- [`getPreloadTags()`](#getpreloadtags)
-		- [Options](#options)
-			- [`option.crossorigin`](#optioncrossorigin)
-			- [`option.integrity`](#optionintegrity)
-	- [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+	- [Methods](#methods)
+		- [`inject()`](#inject)
+		- [`getScriptTag()`](#getscripttag)
+		- [`getStyleTags()`](#getstyletags)
+		- [`getPreloadTags()`](#getpreloadtags)
+	- [Options](#options)
+		- [`option.crossorigin`](#optioncrossorigin)
+		- [`option.integrity`](#optionintegrity)
+- [License](#license)
 	
 ## Installation
 
