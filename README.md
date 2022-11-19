@@ -19,8 +19,8 @@
 			- [`getStyleTags()`](#getstyletags)
 			- [`getPreloadTags()`](#getpreloadtags)
 		- [Options](#options)
-			- [`crossorigin`](#crossorigin)
-			- [`integrity`](#integrity)
+			- [`option.crossorigin`](#optioncrossorigin)
+			- [`option.integrity`](#optionintegrity)
 	- [License](#license)
 	
 ## Installation
@@ -109,13 +109,13 @@ Returns the preload tags for an entry in the manifest
 
 ### Options
 
-#### `crossorigin`
+#### `option.crossorigin`
 
 Type: `boolean | "anonymous" | "use-credentials"`
 
 Toggles `crossorigin` attribute on script and style tags, or assigns a value
 
-#### `integrity`
+#### `option.integrity`
 
 Type: `boolean`
 
