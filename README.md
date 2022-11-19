@@ -16,7 +16,7 @@
 		- [Methods](#methods)
 			- [`inject()`](#inject)
 			- [`getScriptTag()`](#getscripttag)
-			- [`getStyleTags`](#getstyletags)
+			- [`getStyleTags()`](#getstyletags)
 			- [`getPreloadTags()`](#getpreloadtags)
 		- [Options](#options)
 			- [`crossorigin`](#crossorigin)
@@ -95,7 +95,7 @@ Usage: `getScriptTag(string $entrypoint, array $options)`
 
 Returns the script tag for an entry in the manifest
 
-#### `getStyleTags`
+#### `getStyleTags()`
 
 Usage: `getStyleTags(string $entrypoint, array $options)`
 
