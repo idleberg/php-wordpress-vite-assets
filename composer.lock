@@ -4,29 +4,29 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d124a5e6ec6912f396360f7d53b3210",
+    "content-hash": "e15a12fcfcc63b6dc589d66f5cb22407",
     "packages": [
         {
             "name": "idleberg/vite-manifest",
-            "version": "v0.7.2",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/idleberg/php-vite-manifest.git",
-                "reference": "5390710bf02ac2594e11ac9c6896ba0132f130c6"
+                "reference": "e0e65d0eda39c0d93d47fabb9a8a9f1f5e2febcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/5390710bf02ac2594e11ac9c6896ba0132f130c6",
-                "reference": "5390710bf02ac2594e11ac9c6896ba0132f130c6",
+                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/e0e65d0eda39c0d93d47fabb9a8a9f1f5e2febcf",
+                "reference": "e0e65d0eda39c0d93d47fabb9a8a9f1f5e2febcf",
                 "shasum": ""
             },
             "require": {
                 "league/uri": "^6.0",
-                "php": "^7.4 || ^8.0"
+                "php": ">=8.0"
             },
             "require-dev": {
-                "codeception/codeception": "^4.1",
-                "codeception/module-asserts": "^1.0.0",
+                "codeception/codeception": "^5.0.4",
+                "codeception/module-asserts": "^3.0.0",
                 "friendsofphp/php-cs-fixer": "^3.8"
             },
             "type": "library",
@@ -53,9 +53,9 @@
             ],
             "support": {
                 "issues": "https://github.com/idleberg/php-vite-manifest/issues",
-                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.7.2"
+                "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.8.0"
             },
-            "time": "2022-08-31T22:13:02+00:00"
+            "time": "2022-11-27T22:55:56+00:00"
         },
         {
             "name": "league/uri",
