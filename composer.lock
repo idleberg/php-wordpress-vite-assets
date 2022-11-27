@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/idleberg/php-vite-manifest.git",
-                "reference": "e0e65d0eda39c0d93d47fabb9a8a9f1f5e2febcf"
+                "reference": "98350b3b27676757f46b8d92b226dd9a5dc8dd15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/e0e65d0eda39c0d93d47fabb9a8a9f1f5e2febcf",
-                "reference": "e0e65d0eda39c0d93d47fabb9a8a9f1f5e2febcf",
+                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/98350b3b27676757f46b8d92b226dd9a5dc8dd15",
+                "reference": "98350b3b27676757f46b8d92b226dd9a5dc8dd15",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "issues": "https://github.com/idleberg/php-vite-manifest/issues",
                 "source": "https://github.com/idleberg/php-vite-manifest/tree/v0.8.0"
             },
-            "time": "2022-11-27T22:55:56+00:00"
+            "time": "2022-11-27T23:02:44+00:00"
         },
         {
             "name": "league/uri",
