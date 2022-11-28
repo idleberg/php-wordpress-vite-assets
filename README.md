@@ -46,7 +46,7 @@ $manifest = "path/to/manifest.json";
 $entryPoint = "index.ts";
 
 $viteAssets = new WordpressViteAssets($manifest, $baseUrl);
-$viteAssets->auto($entryPoint);
+$viteAssets->inject($entryPoint);
 ```
 
 ### Methods
