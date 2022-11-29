@@ -68,7 +68,7 @@ class WordpressViteAssets
 
 		$entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
-		add_action($action, function() use ($entries) {
+		add_action($action, function() use ($entries, $options) {
 			foreach ($entries as $entry) {
 				$scriptTag = $this->getScriptTag($entry, $options);
 
@@ -86,7 +86,7 @@ class WordpressViteAssets
 			}
 		}, $this->getPriority($priority, "preloads"), 1);
 
-		add_action($action, function() use ($entries) {
+		add_action($action, function() use ($entries, $options) {
 			foreach ($entries as $entry) {
 				foreach ($this->getStyleTags($entry, $options) as $styleTag) {
 					echo $styleTag . PHP_EOL;
