@@ -86,7 +86,7 @@ Returns the preload tags for an entry in the manifest
 
 Type: `null | string`
 
-Allows overriding the default action for the `inject()` method.
+Allows overriding the default action for the [`inject()`](#inject) method.
 
 **Example**
 
@@ -118,7 +118,7 @@ Toggles `integrity` attribute on script and style tags
 
 Type: `int | array`
 
-Allows overriding the priority for the action that injects assets. It allows granular control when provided as an array:
+Allows overriding the priority for the [`inject()`](#inject) method. It allows granular control when provided as an array:
 
 **Example**
 
