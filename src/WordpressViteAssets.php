@@ -30,8 +30,10 @@ class WordpressViteAssets
 {
 	private $vm;
 	private $defaultOptions = [
+		"action" => null,
 		"crossorigin" => true,
-		"integrity" => true
+		"integrity" => true,
+		"priority" => 0
 	];
 
 	public function __construct(string $manifestFile, string $basePath, string $algorithm = "sha256")
@@ -44,15 +46,17 @@ class WordpressViteAssets
 	 * Injects tags for entries specified in the manifest to the page header
 	 *
 	 * @param array|string $entrypoint
-	 * @param int $priority (optional)
-	 * @param string $action (optional)
+	 * @param array $customOptions (optional)
 	 * @return void
 	 */
-	public function inject(array|string $entrypoint, int $priority = 0, string $action = null): void
+	public function inject(array|string $entrypoint, array $customOptions = []): void
 	{
 		if (!function_exists('add_action')) {
 			throw new \Exception("WordPress function add_action() not found");
 		}
+
+		$options = $this->mergeOptions($customOptions);
+		["action" => $action, "priority" => $priority] = $options;
 
 		if ($action === null || !is_string($action)) {
 			$action = is_admin() ? 'admin_head' : 'wp_head';
@@ -66,7 +70,7 @@ class WordpressViteAssets
 
 		add_action($action, function() use ($entries) {
 			foreach ($entries as $entry) {
-				$scriptTag = $this->getScriptTag($entry);
+				$scriptTag = $this->getScriptTag($entry, $options);
 
 				if ($scriptTag) {
 					echo $scriptTag . PHP_EOL;
@@ -84,7 +88,7 @@ class WordpressViteAssets
 
 		add_action($action, function() use ($entries) {
 			foreach ($entries as $entry) {
-				foreach ($this->getStyleTags($entry) as $styleTag) {
+				foreach ($this->getStyleTags($entry, $options) as $styleTag) {
 					echo $styleTag . PHP_EOL;
 				}
 			}
@@ -95,11 +99,12 @@ class WordpressViteAssets
 	 * Returns the script tag for an entry in the manifest
 	 *
 	 * @param string $entrypoint
-	 * @param array $options (optional)
+	 * @param array $customOptions (optional)
 	 * @return string
 	 */
-	public function getScriptTag(string $entrypoint, array $options = []): string
+	public function getScriptTag(string $entrypoint, array $customOptions = []): string
 	{
+		$options = $this->mergeOptions($customOptions);
 		$hash = $options["integrity"] ?? true;
 		$url = $this->vm->getEntrypoint($entrypoint, $hash);
 
@@ -119,11 +124,12 @@ class WordpressViteAssets
 	 * Returns the style tags for an entry in the manifest
 	 *
 	 * @param string $entrypoint
-	 * @param array $options (optional)
+	 * @param array $customOptions (optional)
 	 * @return array
 	 */
-	public function getStyleTags(string $entrypoint, array $options = []): array
+	public function getStyleTags(string $entrypoint, array $customOptions = []): array
 	{
+		$options = $this->mergeOptions($customOptions);
 		$hash = $options["integrity"] ?? true;
 
 		return array_map(function($url, $options) {
@@ -175,15 +181,12 @@ class WordpressViteAssets
 	 *
 	 * @param string $url
 	 * @param array $attributes
-	 * @param array $options
+	 * @param array $customOptions
 	 * @return array
 	 */
-	private function getAttributes($url, array $attributes, array $options)
+	private function getAttributes($url, array $attributes, array $customOptions)
 	{
-		["crossorigin" => $crossorigin, "integrity" => $integrity] = array_merge(
-			$this->defaultOptions,
-			$options
-		);
+		["crossorigin" => $crossorigin, "integrity" => $integrity] = $this->mergeOptions($customOptions);
 
 		if ($crossorigin === true) {
 			$attributes[] = "crossorigin";
@@ -196,5 +199,19 @@ class WordpressViteAssets
 		}
 
 		return join(" ", $attributes);
+	}
+
+	/**
+	 * Merges custom options with defaults
+	 *
+	 * @param array $options (optional)
+	 * @return array
+	 */
+	private function mergeOptions(array $options = [])
+	{
+		return array_merge(
+			$this->defaultOptions,
+			$options
+		);
 	}
 }

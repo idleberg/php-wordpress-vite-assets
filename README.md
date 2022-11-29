@@ -18,8 +18,10 @@
 		- [`getStyleTags()`](#getstyletags)
 		- [`getPreloadTags()`](#getpreloadtags)
 	- [Options](#options)
+		- [`option.action`](#optionaction)
 		- [`option.crossorigin`](#optioncrossorigin)
 		- [`option.integrity`](#optionintegrity)
+		- [`option.priority`](#optionpriority)
 - [License](#license)
 	
 ## Installation
@@ -52,41 +54,13 @@ $viteAssets->inject($entryPoint);
 ### Methods
 #### `inject()`
 
-Usage: `inject(array|string $entrypoints, array|int $priority = 0, string $action = null)`
+Usage: `inject(array|string $entrypoints, array $options = [])`
 
 Injects tags for entries specified in the manifest to the page header
 
 - script entrypoint
 - preloads for imported scripts
 - style tags
-
-The priority argument allows granular control when provided as an array:
-
-**Example**
-
-```php
-// functions.php
-
-$priorities = [
-    "scripts"  => 10,
-    "preloads" => 0,
-    "styles"   => 20
-];
-
-$viteAssets->inject("index.ts", $priorities);
-```
-
-The method automatically detects whether your Vite app runs in frontend or backend context, but you can override this behaviour by passing a custom action:
-
-**Example**
-
-```php
-// plugin.php
-
-$viteAssets->inject("index.ts", 0, "admin_head");
-```
-
-:warning: In most cases, you don't need to specify a custom action!
 
 #### `getScriptTag()`
 
@@ -108,6 +82,26 @@ Returns the preload tags for an entry in the manifest
 
 ### Options
 
+#### `option.action`
+
+Type: `null | string`
+
+Allows overriding the default action for the `inject()` method.
+
+**Example**
+
+```php
+// plugin.php
+
+$options = [
+	"action" => "admin_head"
+];
+
+$viteAssets->inject("index.ts", $options);
+```
+
+:warning: It's unlikely that you want to change the default action, so don't override unless you know what you're doing!
+
 #### `option.crossorigin`
 
 Type: `boolean | "anonymous" | "use-credentials"`
@@ -119,6 +113,28 @@ Toggles `crossorigin` attribute on script and style tags, or assigns a value
 Type: `boolean`
 
 Toggles `integrity` attribute on script and style tags
+
+#### `option.priority`
+
+Type: `int | array`
+
+Allows overriding the priority for the action that injects assets. It allows granular control when provided as an array:
+
+**Example**
+
+```php
+// functions.php
+
+$options = [
+	"priority" => [
+    	"scripts"  => 10,
+    	"preloads" => 0,
+    	"styles"   => 20
+	]
+];
+
+$viteAssets->inject("index.ts", $options);
+```
 
 ## License
 
