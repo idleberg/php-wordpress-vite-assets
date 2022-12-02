@@ -125,9 +125,9 @@ Allows overriding the priority for the [`inject()`](#inject) method. It allows g
 
 $viteAssets->inject("index.ts", [
 	"priority" => [
-    	"scripts"  => 10,
-    	"preloads" => 0,
-    	"styles"   => 20
+		"scripts"  => 10,
+		"preloads" => 0,
+		"styles"   => 20
 	]
 ]);
 ```
