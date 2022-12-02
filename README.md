@@ -93,11 +93,9 @@ Allows overriding the default action for the [`inject()`](#inject) method.
 ```php
 // plugin.php
 
-$options = [
+$viteAssets->inject("index.ts", [
 	"action" => "admin_head"
-];
-
-$viteAssets->inject("index.ts", $options);
+]);
 ```
 
 :warning: It's unlikely that you want to change the default action, so don't override unless you know what you're doing!
@@ -125,15 +123,13 @@ Allows overriding the priority for the [`inject()`](#inject) method. It allows g
 ```php
 // functions.php
 
-$options = [
+$viteAssets->inject("index.ts", [
 	"priority" => [
     	"scripts"  => 10,
     	"preloads" => 0,
     	"styles"   => 20
 	]
-];
-
-$viteAssets->inject("index.ts", $options);
+]);
 ```
 
 ## License
