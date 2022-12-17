@@ -68,7 +68,7 @@ class WordpressViteAssets
 
 		$entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
-		add_action($action, function() use ($entries, $options) {
+		add_action($action, function () use ($entries, $options) {
 			foreach ($entries as $entry) {
 				$scriptTag = $this->getScriptTag($entry, $options);
 
@@ -78,7 +78,7 @@ class WordpressViteAssets
 			}
 		}, $this->getPriority($priority, "scripts"), 1);
 
-		add_action($action, function() use ($entries) {
+		add_action($action, function () use ($entries) {
 			foreach ($entries as $entry) {
 				foreach ($this->getPreloadTags($entry) as $preloadTag) {
 					echo $preloadTag . PHP_EOL;
@@ -86,7 +86,7 @@ class WordpressViteAssets
 			}
 		}, $this->getPriority($priority, "preloads"), 1);
 
-		add_action($action, function() use ($entries, $options) {
+		add_action($action, function () use ($entries, $options) {
 			foreach ($entries as $entry) {
 				foreach ($this->getStyleTags($entry, $options) as $styleTag) {
 					echo $styleTag . PHP_EOL;
@@ -117,7 +117,7 @@ class WordpressViteAssets
 			"src=\"{$url['url']}\""
 		];
 
-		return "<script {$this->getAttributes($url, $defaultAttributes, $options)}></script>";
+		return "<script {$this->getAttributes($url,$defaultAttributes,$options)}></script>";
 	}
 
 	/**
@@ -132,14 +132,13 @@ class WordpressViteAssets
 		$options = $this->mergeOptions($customOptions);
 		$hash = $options["integrity"] ?? true;
 
-		return array_map(function($url, $options) {
+		return array_map(function ($url) use ($options) {
 			$defaultAttributes = [
 				"rel=\"stylesheet\"",
 				"href=\"{$url['url']}\""
 			];
-
-			return "<link {$this->getAttributes($url, $defaultAttributes, $options)} />";
-		}, $this->vm->getStyles($entrypoint, $hash), [$options]);
+			return "<link {$this->getAttributes($url,$defaultAttributes,$options)} />";
+		}, $this->vm->getStyles($entrypoint, $hash));
 	}
 
 	/**
@@ -150,7 +149,7 @@ class WordpressViteAssets
 	 */
 	public function getPreloadTags(string $entry): array
 	{
-		return array_map(function($import) {
+		return array_map(function ($import) {
 			return "<link rel=\"modulepreload\" href=\"{$import['url']}\" />";
 		}, $this->vm->getImports($entry));
 	}
