@@ -161,7 +161,7 @@ class WordpressViteAssets
 	 * @param string $key
 	 * @return int
 	 */
-	private function getPriority(int $priority, string $key)
+	private function getPriority(array|int $priority, string $key)
 	{
 		switch (true) {
 			case is_integer($priority):
