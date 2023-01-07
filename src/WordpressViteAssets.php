@@ -28,8 +28,8 @@ use Idleberg\ViteManifest\ViteManifest;
 
 class WordpressViteAssets
 {
-	private $vm;
-	private $defaultOptions = [
+	private ViteManifest $vm;
+	private array $defaultOptions = [
 		"action" => null,
 		"crossorigin" => true,
 		"integrity" => true,
