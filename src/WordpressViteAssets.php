@@ -117,7 +117,7 @@ class WordpressViteAssets
 			"src=\"{$url['url']}\""
 		];
 
-		return "<script {$this->getAttributes($url,$defaultAttributes,$options)}></script>";
+		return "<script {$this->getAttributes($url, $defaultAttributes, $options)}></script>";
 	}
 
 	/**
@@ -137,7 +137,8 @@ class WordpressViteAssets
 				"rel=\"stylesheet\"",
 				"href=\"{$url['url']}\""
 			];
-			return "<link {$this->getAttributes($url,$defaultAttributes,$options)} />";
+
+			return "<link {$this->getAttributes($url, $defaultAttributes, $options)} />";
 		}, $this->vm->getStyles($entrypoint, $hash));
 	}
 
@@ -176,14 +177,14 @@ class WordpressViteAssets
 	}
 
 	/**
-	 * Returns optional attribues for script or link tags
+	 * Returns optional attributes for script or link tags
 	 *
-	 * @param string $url
+	 * @param array $url
 	 * @param array $attributes
 	 * @param array $customOptions
-	 * @return array
+	 * @return string
 	 */
-	private function getAttributes($url, array $attributes, array $customOptions)
+	private function getAttributes(array $url, array $attributes, array $customOptions)
 	{
 		["crossorigin" => $crossorigin, "integrity" => $integrity] = $this->mergeOptions($customOptions);
 
