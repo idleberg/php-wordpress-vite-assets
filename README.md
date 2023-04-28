@@ -1,6 +1,6 @@
-# Wordpress Vite Assets
+# Vite Assets for WordPress
 
-> Adds assets from a [Vite](https://vitejs.dev/) manifest to the Wordpress head
+> Adds assets from a [Vite](https://vitejs.dev/) manifest to the WordPress head
 
 [![Packagist](https://flat.badgen.net/packagist/license/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
 [![Packagist](https://flat.badgen.net/packagist/v/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
