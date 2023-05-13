@@ -22,11 +22,11 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-namespace Idleberg\WordpressViteAssets;
+namespace Idleberg\WordPress\ViteAssets;
 
 use Idleberg\ViteManifest\ViteManifest;
 
-class WordpressViteAssets
+class Assets
 {
 	private ViteManifest $vm;
 	private array $defaultOptions = [
