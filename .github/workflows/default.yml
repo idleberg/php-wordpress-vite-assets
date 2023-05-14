@@ -11,6 +11,7 @@ on:
     - 'src/**'
     - 'tests/**'
     - 'composer.lock'
+  workflow_dispatch:
 
 jobs:
   run:
