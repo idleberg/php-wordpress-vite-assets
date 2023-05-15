@@ -1,6 +1,6 @@
-# Wordpress Vite Assets
+# Vite Assets for WordPress
 
-> Adds assets from a [Vite](https://vitejs.dev/) manifest to the Wordpress head
+> Adds assets from a [Vite](https://vitejs.dev/) manifest to the WordPress head
 
 [![Packagist](https://flat.badgen.net/packagist/license/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
 [![Packagist](https://flat.badgen.net/packagist/v/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
@@ -33,7 +33,7 @@
 To get you going, first instantiate the class exposed by this library
 
 ```php
-new WordpressViteAssets(string $manifestPath, string $baseUri, string $algorithm = "sha256");
+new Assets(string $manifestPath, string $baseUri, string $algorithm = "sha256");
 ```
 
 **Example**
@@ -41,13 +41,13 @@ new WordpressViteAssets(string $manifestPath, string $baseUri, string $algorithm
 ```php
 // functions.php
 
-use Idleberg\WordpressViteAssets\WordpressViteAssets;
+use Idleberg\WordPress\ViteAssets\Assets;
 
 $baseUrl = get_stylesheet_directory_uri();
 $manifest = "path/to/manifest.json";
 $entryPoint = "index.ts";
 
-$viteAssets = new WordpressViteAssets($manifest, $baseUrl);
+$viteAssets = new Assets($manifest, $baseUrl);
 $viteAssets->inject($entryPoint);
 ```
 

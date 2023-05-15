@@ -1,8 +1,8 @@
 <?php
 
-use Idleberg\WordpressViteAssets\WordpressViteAssets;
+use Idleberg\WordPress\ViteAssets\Assets;
 
-class WordpressViteAssetsTest extends \Codeception\Test\Unit
+class AssetsTest extends \Codeception\Test\Unit
 {
 	/**
 	 * @var \UnitTester
@@ -17,7 +17,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 	protected function _before()
 	{
 		$this->basePath = realpath($this->baseUrl);
-		$this->viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl);
+		$this->viteAssets = new Assets($this->manifest, $this->baseUrl);
 	}
 
 	protected function _after()
@@ -35,7 +35,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetScriptTagSHA256()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha256");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha256");
 
 		$actual = $viteAssets->getScriptTag("demo.ts");
 		$expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin integrity=\"sha256-hK5PvH3PaGbMYq5EuedyA6F5uVkfoEwAznLNThffuZ8=\"></script>";
@@ -45,7 +45,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetScriptTagSHA384()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha384");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha384");
 
 		$actual = $viteAssets->getScriptTag("demo.ts");
 		$expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin integrity=\"sha384-fWetO954Htoz6cSa6ZLx231UagP8VTXlwaO1g/JisfA9TLZnHPlgPBUwsqrWHjg0\"></script>";
@@ -55,7 +55,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetScriptTagSHA512()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha512");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha512");
 
 		$actual = $viteAssets->getScriptTag("demo.ts");
 		$expected = "<script type=\"module\" src=\"{$this->basePath}/assets/index.deadbeef.js\" crossorigin integrity=\"sha512-yD2Vb8LCDxC5ingFUTEa50J7EaqoK4xJzwimk2+7PPM9jczPfTDHngkduhYar/pz4dCW7qWIhm0fXFDXm1lL/A==\"></script>";
@@ -98,7 +98,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetStyletagsSHA256()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha256");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha256");
 
 		foreach ($viteAssets->getStyleTags("demo.ts") as $actual) {
 			$expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" crossorigin integrity=\"sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=\" />";
@@ -109,7 +109,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetStyletagsSHA384()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha384");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha384");
 
 		foreach ($viteAssets->getStyleTags("demo.ts") as $actual) {
 			$expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" crossorigin integrity=\"sha384-hRJLv1qN+U3dkKJIw8ANFbwPS/ED0NHZfZU96sK3vRe3evsIbIxjnkoFcJeryuVC\" />";
@@ -120,7 +120,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetStyletagsSHA512()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha512");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha512");
 
 		foreach ($viteAssets->getStyleTags("demo.ts") as $actual) {
 			$expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" crossorigin integrity=\"sha512-vmI3y876ZfoogL2eJuRJy4ToOnrfwPVE7T9yMlhJp5lpSGHZ3ejDNqd7A0QYFlk0/SOugOwB1x0FCWqO95pz4Q==\" />";
@@ -149,7 +149,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetStyletagsWithoutCrossoriginAttributeSHA256()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha256");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha256");
 
 		foreach ($viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false ]) as $actual) {
 			$expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" integrity=\"sha256-EEEKapOxnF8qZUxsx0ksgdBVnEB+8dXUJvH75TwCWvU=\" />";
@@ -160,7 +160,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetStyletagsWithoutCrossoriginAttributeSHA384()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha384");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha384");
 
 		foreach ($viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false ]) as $actual) {
 			$expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" integrity=\"sha384-hRJLv1qN+U3dkKJIw8ANFbwPS/ED0NHZfZU96sK3vRe3evsIbIxjnkoFcJeryuVC\" />";
@@ -171,7 +171,7 @@ class WordpressViteAssetsTest extends \Codeception\Test\Unit
 
 	public function testGetStyletagsWithoutCrossoriginAttributeSHA512()
 	{
-		$viteAssets = new WordpressViteAssets($this->manifest, $this->baseUrl, "sha512");
+		$viteAssets = new Assets($this->manifest, $this->baseUrl, "sha512");
 
 		foreach ($viteAssets->getStyleTags("demo.ts", [ "crossorigin" => false ]) as $actual) {
 			$expected = "<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" integrity=\"sha512-vmI3y876ZfoogL2eJuRJy4ToOnrfwPVE7T9yMlhJp5lpSGHZ3ejDNqd7A0QYFlk0/SOugOwB1x0FCWqO95pz4Q==\" />";
