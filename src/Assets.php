@@ -24,11 +24,11 @@
 
 namespace Idleberg\WordPress\ViteAssets;
 
-use Idleberg\ViteManifest\ViteManifest;
+use Idleberg\ViteManifest\Manifest;
 
 class Assets
 {
-	private ViteManifest $vm;
+	private Manifest $vm;
 	private array $defaultOptions = [
 		"action" => null,
 		"crossorigin" => true,
@@ -39,7 +39,7 @@ class Assets
 	public function __construct(string $manifestFile, string $basePath, string $algorithm = "sha256")
 	{
 		// Let ViteManifest handle errors
-		$this->vm = new ViteManifest($manifestFile, $basePath, $algorithm);
+		$this->vm = new Manifest($manifestFile, $basePath, $algorithm);
 	}
 
 	/**
