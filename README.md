@@ -64,13 +64,13 @@ Injects tags for entries specified in the manifest to the page header
 
 #### `getScriptTag()`
 
-Usage: `getScriptTag(string $entrypoint, array $options)`
+Usage: `getScriptTag(string $entrypoint, array $options = [])`
 
 Returns the script tag for an entry in the manifest
 
 #### `getStyleTags()`
 
-Usage: `getStyleTags(string $entrypoint, array $options)`
+Usage: `getStyleTags(string $entrypoint, array $options = [])`
 
 Returns the style tags for an entry in the manifest
 
