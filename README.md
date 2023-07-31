@@ -2,10 +2,10 @@
 
 > Adds assets from a [Vite](https://vitejs.dev/) manifest to the WordPress head
 
-[![Packagist](https://flat.badgen.net/packagist/license/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
-[![Packagist](https://flat.badgen.net/packagist/v/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
-[![Packagist](https://flat.badgen.net/packagist/php/idleberg/wordpress-vite-assets)](https://packagist.org/packages/idleberg/wordpress-vite-assets)
-[![CI](https://img.shields.io/github/actions/workflow/status/idleberg/php-wordpress-vite-assets/default.yml?style=flat-square)](https://github.com/idleberg/php-wordpress-vite-assets/actions)
+[![License](https://img.shields.io/packagist/l/idleberg/wordpress-vite-assets?style=for-the-badge&color=blue)](https://github.com/idleberg/php-wordpress-vite-assets/blob/main/LICENSE)
+[![Version](https://img.shields.io/packagist/v/idleberg/wordpress-vite-assets?style=for-the-badge)](https://github.com/idleberg/php-wordpress-vite-assets/releases)
+![PHP Version](https://img.shields.io/packagist/dependency-v/idleberg/wordpress-vite-assets/php?style=for-the-badge)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/php-wordpress-vite-assets/default.yml?style=for-the-badge)](https://github.com/idleberg/php-wordpress-vite-assets/actions)
 
 
 **Table of contents**
