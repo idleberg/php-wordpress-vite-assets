@@ -12,5 +12,10 @@
   },
   "vendor.deadbeef.js": {
     "file": "assets/vendor.deadbeef.js"
+  },
+  "demo.css": {
+    "file": "assets/demo.deadbeef.css",
+    "isEntry": true,
+    "src": "demo.css"
   }
 }
