@@ -70,10 +70,12 @@ class Assets
 
 		add_action($action, function () use ($entries, $options) {
 			foreach ($entries as $entry) {
-				$scriptTag = $this->getScriptTag($entry, $options);
+				$tag = str_ends_with($entry, '.css')
+					? array_key_first($this->getStyleTags($entry, $options))
+					: $this->getScriptTag($entry, $options);
 
-				if ($scriptTag) {
-					echo $scriptTag . PHP_EOL;
+				if ($tag) {
+					echo $tag . PHP_EOL;
 				}
 			}
 		}, $this->getPriority($priority, "scripts"), 1);
