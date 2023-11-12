@@ -52,6 +52,7 @@ $viteAssets->inject($entryPoint);
 ```
 
 ### Methods
+
 #### `inject()`
 
 Usage: `inject(array|string $entrypoints, array $options = [])`
