@@ -1,6 +1,6 @@
 {
 	"name": "idleberg/wordpress-vite-assets",
-	"description": "Injects assets from a Vite manifest to the Wordpress head",
+	"description": "Injects assets from a Vite manifest to the Wordpress head, supports themes and plugins",
 	"type": "library",
 	"license": "MIT",
 	"keywords": [
