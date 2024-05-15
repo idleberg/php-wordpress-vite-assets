@@ -69,7 +69,7 @@ class Assets
         $entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
         add_action($action, function () use ($entries, $options) {
-            foreach ($entries as $entry) {
+            array_map(function($entry) use ($options) {
                 $tag = str_ends_with($entry, '.css')
                     ? array_key_first($this->getStyleTags($entry, $options))
                     : $this->getScriptTag($entry, $options);
@@ -77,23 +77,23 @@ class Assets
                 if ($tag) {
                     echo $tag . PHP_EOL;
                 }
-            }
+            }, $entries);
         }, $this->getPriority($priority, "scripts"), 1);
 
         add_action($action, function () use ($entries) {
-            foreach ($entries as $entry) {
-                foreach ($this->getPreloadTags($entry) as $preloadTag) {
+            array_map(function($entry) {
+                array_map(function($preloadTag) {
                     echo $preloadTag . PHP_EOL;
-                }
-            }
+                }, $this->getPreloadTags($entry));
+            }, $entries);
         }, $this->getPriority($priority, "preloads"), 1);
 
         add_action($action, function () use ($entries, $options) {
-            foreach ($entries as $entry) {
-                foreach ($this->getStyleTags($entry, $options) as $styleTag) {
+            array_map(function($entry) use ($options) {
+                array_map(function($styleTag) {
                     echo $styleTag . PHP_EOL;
-                }
-            }
+                }, $this->getStyleTags($entry, $options));
+            }, $entries);
         }, $this->getPriority($priority, "styles"), 1);
     }
 
