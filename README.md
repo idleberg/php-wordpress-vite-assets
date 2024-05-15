@@ -1,6 +1,6 @@
 # Vite Assets for WordPress
 
-> Adds assets from a [Vite](https://vitejs.dev/) manifest to the WordPress head
+> Adds assets from a [Vite](https://vitejs.dev/) manifest to the WordPress head, supports themes and plugins
 
 [![License](https://img.shields.io/packagist/l/idleberg/wordpress-vite-assets?style=for-the-badge&color=blue)](https://github.com/idleberg/php-wordpress-vite-assets/blob/main/LICENSE)
 [![Version](https://img.shields.io/packagist/v/idleberg/wordpress-vite-assets?style=for-the-badge)](https://github.com/idleberg/php-wordpress-vite-assets/releases)
