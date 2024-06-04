@@ -70,7 +70,7 @@ class Assets
 
         add_action($action, function () use ($entries, $options) {
             array_map(function($entry) use ($options) {
-                $tag = str_ends_with($entry, '.css')
+                $tag = str_ends_with($entry, '.css') || str_ends_with($entry, '.scss')
                     ? array_key_first($this->getStyleTags($entry, $options))
                     : $this->getScriptTag($entry, $options);
 
