@@ -70,7 +70,7 @@ class Assets
 
         add_action($action, function () use ($entries, $options) {
             array_map(function($entry) use ($options) {
-                $tag = str_ends_with($entry, '.css') || str_ends_with($entry, '.scss')
+                $tag = $this->isStylesheet($entry)
                     ? array_key_first($this->getStyleTags($entry, $options))
                     : $this->getScriptTag($entry, $options);
 
@@ -215,5 +215,18 @@ class Assets
             $this->defaultOptions,
             $options
         );
+    }
+
+    /**
+     * Determines wether a file is a stylesheet based on its extension
+     *
+     * @param string $entry
+     * @return bool
+     */
+    private function isStylesheet(string $entry)
+    {
+        $styleSheets = ['.css', '.less', '.scss', '.styl'];
+
+        return in_array(pathinfo($entry, PATHINFO_EXTENSION), $styleSheets);
     }
 }
