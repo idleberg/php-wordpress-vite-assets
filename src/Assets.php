@@ -43,7 +43,7 @@ class Assets
     }
 
     /**
-     * Injects tags for entries specified in the manifest to the page header
+     * Injects tags for entries specified in the manifest to the page header.
      *
      * @param array|string $entrypoint
      * @param array $customOptions (optional)
@@ -98,7 +98,7 @@ class Assets
     }
 
     /**
-     * Returns the script tag for an entry in the manifest
+     * Returns the script tag for an entry in the manifest.
      *
      * @param string $entrypoint
      * @param array $customOptions (optional)
@@ -123,7 +123,7 @@ class Assets
     }
 
     /**
-     * Returns the style tags for an entry in the manifest
+     * Returns the style tags for an entry in the manifest.
      *
      * @param string $entrypoint
      * @param array $customOptions (optional)
@@ -145,7 +145,7 @@ class Assets
     }
 
     /**
-     * Returns the preload tags for an entry in the manifest
+     * Returns the preload tags for an entry in the manifest.
      *
      * @param string $entry
      * @return array
@@ -158,7 +158,7 @@ class Assets
     }
 
     /**
-     * Returns priority for an action
+     * Returns priority for an action.
      *
      * @param array|int $priority
      * @param string $key
@@ -179,7 +179,7 @@ class Assets
     }
 
     /**
-     * Returns optional attributes for script or link tags
+     * Returns optional attributes for script or link tags.
      *
      * @param array $url
      * @param array $attributes
@@ -204,7 +204,7 @@ class Assets
     }
 
     /**
-     * Merges custom options with defaults
+     * Merges custom options with defaults.
      *
      * @param array $options (optional)
      * @return array
@@ -218,7 +218,7 @@ class Assets
     }
 
     /**
-     * Determines wether a file is a stylesheet based on its extension
+     * Determines whether a file is a stylesheet based on its extension.
      *
      * @param string $entry
      * @return bool
