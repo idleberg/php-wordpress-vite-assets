@@ -34,7 +34,7 @@
 		"phpstan/extension-installer": "^1.2",
 		"szepeviktor/phpstan-wordpress": "^1.1",
 		"brainmaestro/composer-git-hooks": "^3.0@alpha",
-		"icanhazstring/composer-unused": "^0.8.10"
+		"shipmonk/composer-dependency-analyser": "^1.6"
 	},
 	"scripts": {
 		"format": "vendor/bin/php-cs-fixer fix ./src",
@@ -43,7 +43,7 @@
 			"vendor/bin/phpstan analyse ./src --memory-limit=512M --level 5",
 			"vendor/bin/codecept run"
 		],
-		"unused": "vendor/bin/composer-unused"
+		"unused": "vendor/bin/composer-dependency-analyser"
 	},
 	"config": {
 		"allow-plugins": {
