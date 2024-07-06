@@ -33,7 +33,7 @@
 		"phpstan/phpstan": "^1.9",
 		"phpstan/extension-installer": "^1.2",
 		"szepeviktor/phpstan-wordpress": "^1.1",
-		"brainmaestro/composer-git-hooks": "^3.0@alpha",
+		"brainmaestro/composer-git-hooks": "^3.0.0",
 		"shipmonk/composer-dependency-analyser": "^1.6"
 	},
 	"scripts": {
