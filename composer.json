@@ -52,6 +52,11 @@
 	},
 	"extra": {
 		"hooks": {
+            "config": {
+                "stop-on-failure": [
+                    "pre-commit"
+                ]
+            },
 			"pre-commit": [
 				"composer run format",
 				"composer run lint",
