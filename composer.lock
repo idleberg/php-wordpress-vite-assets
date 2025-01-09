@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2109b495f992e0fa6740fa18009019a7",
+    "content-hash": "227f174c322a27a3aac96a1a624f1ab4",
     "packages": [
         {
             "name": "idleberg/vite-manifest",
