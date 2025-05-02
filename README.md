@@ -113,6 +113,9 @@ Type: `null | string`
 
 Allows overriding the default action for the [`inject()`](#inject) method.
 
+> [!WARNING]
+> It's unlikely that you want to change the default action, so don't override unless you know what you're doing!
+
 **Example**
 
 ```php
@@ -122,9 +125,6 @@ $viteAssets->inject("index.ts", [
 	"action" => "admin_head"
 ]);
 ```
-
-> [!WARNING]
-> It's unlikely that you want to change the default action, so don't override unless you know what you're doing!
 
 #### `option.crossorigin`
 
