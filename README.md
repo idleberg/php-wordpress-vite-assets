@@ -123,7 +123,8 @@ $viteAssets->inject("index.ts", [
 ]);
 ```
 
-:warning: It's unlikely that you want to change the default action, so don't override unless you know what you're doing!
+> [!WARNING]
+> It's unlikely that you want to change the default action, so don't override unless you know what you're doing!
 
 #### `option.crossorigin`
 
