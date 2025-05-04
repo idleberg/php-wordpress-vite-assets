@@ -1,67 +1,72 @@
 {
-	"name": "idleberg/wordpress-vite-assets",
-	"description": "Injects assets from a Vite manifest to the Wordpress head, supports themes and plugins",
-	"type": "library",
-	"license": "MIT",
-	"keywords": [
-		"wordpress",
-		"vite",
-		"vitejs",
-		"vite manifest"
-	],
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"autoload": {
-		"psr-4": {
-			"Idleberg\\WordPress\\ViteAssets\\": "src/"
-		}
-	},
-	"authors": [
-		{
-			"name": "Jan T. Sott",
-			"email": "idleberg@users.noreply.github.com"
-		}
-	],
-	"require": {
-		"php": ">=8.1",
-		"idleberg/vite-manifest": "^1.2.1"
-	},
-	"require-dev": {
-		"codeception/codeception": "^5.0.4",
-		"codeception/module-asserts": "^3.0.0",
-		"friendsofphp/php-cs-fixer": "^3.11",
-		"phpstan/phpstan": "^1.9",
-		"phpstan/extension-installer": "^1.2",
-		"szepeviktor/phpstan-wordpress": "^1.1",
-		"brainmaestro/composer-git-hooks": "^3.0.0",
-		"shipmonk/composer-dependency-analyser": "^1.6"
-	},
-	"scripts": {
-		"format": "vendor/bin/php-cs-fixer fix ./src",
-		"lint": "php -l ./src",
-		"test": [
-			"vendor/bin/phpstan analyse ./src --memory-limit=512M --level 5",
-			"vendor/bin/codecept run"
-		],
-		"unused": "vendor/bin/composer-dependency-analyser"
-	},
-	"config": {
-		"allow-plugins": {
-			"phpstan/extension-installer": true
-		}
-	},
-	"extra": {
-		"hooks": {
+    "name": "idleberg/wordpress-vite-assets",
+    "description": "Injects assets from a Vite manifest to the Wordpress head, supports themes and plugins",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "wordpress",
+        "vite",
+        "vitejs",
+        "vite manifest"
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Idleberg\\WordPress\\ViteAssets\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jan T. Sott",
+            "email": "idleberg@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "idleberg/vite-manifest": "^1.2.1"
+    },
+    "require-dev": {
+        "codeception/codeception": "^5.0.4",
+        "codeception/module-asserts": "^3.0.0",
+        "friendsofphp/php-cs-fixer": "^3.11",
+        "phpstan/phpstan": "^1.9",
+        "phpstan/extension-installer": "^1.2",
+        "szepeviktor/phpstan-wordpress": "^1.1",
+        "brainmaestro/composer-git-hooks": "^3.0.0",
+        "shipmonk/composer-dependency-analyser": "^1.6",
+        "ramsey/conventional-commits": "^1.6"
+    },
+    "scripts": {
+        "format": "vendor/bin/php-cs-fixer fix ./src",
+        "lint": "php -l ./src",
+        "test": [
+            "vendor/bin/phpstan analyse ./src --memory-limit=512M --level 5",
+            "vendor/bin/codecept run"
+        ],
+        "unused": "vendor/bin/composer-dependency-analyser"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "hooks": {
             "config": {
                 "stop-on-failure": [
+                    "commit-msg",
                     "pre-commit"
                 ]
             },
-			"pre-commit": [
-				"composer run format",
-				"composer run lint",
-				"composer run unused"
-			]
-		}
-	}
+            "commit-msg": [
+                "./vendor/bin/conventional-commits validate $1"
+            ],
+            "pre-commit": [
+                "composer run format",
+                "composer run lint",
+                "composer run unused"
+            ]
+        }
+    }
 }
