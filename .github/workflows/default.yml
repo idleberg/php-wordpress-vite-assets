@@ -1,61 +1,61 @@
 name: CI
 
 on:
-  push:
-    paths:
-    - '.github/**'
-    - 'src/**'
-    - 'tests/**'
-    - 'composer.lock'
-  pull_request:
-    paths:
-    - '.github/**'
-    - 'src/**'
-    - 'tests/**'
-    - 'composer.lock'
-  workflow_dispatch:
+    push:
+        paths:
+            - ".github/**"
+            - "src/**"
+            - "tests/**"
+            - "composer.lock"
+    pull_request:
+        paths:
+            - ".github/**"
+            - "src/**"
+            - "tests/**"
+            - "composer.lock"
+    workflow_dispatch:
 
 jobs:
-  run:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['8.1', '8.2', '8.3', '8.4']
-    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
-    env:
-      extensions: intl, pcov
-      key: cache-v1 # can be any string, change to clear the extension cache.
-    steps:
-    - name: Checkout
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
+    run:
+        runs-on: ${{ matrix.operating-system }}
+        strategy:
+            matrix:
+                operating-system: [ubuntu-latest]
+                php-versions: ["8.1", "8.2", "8.3", "8.4"]
+        name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+        env:
+            extensions: intl, pcov
+            key: cache-v1 # can be any string, change to clear the extension cache.
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-    - name: Setup cache environment
-      id: extcache
-      uses: shivammathur/cache-extensions@d622719c5f9eb1f119bee963028d0c0b984525c5 # v1.9.1
-      with:
-        php-version: ${{ matrix.php-versions }}
-        extensions: ${{ env.extensions }}
-        key: ${{ env.key }}
+            - name: Setup cache environment
+              id: extcache
+              uses: shivammathur/cache-extensions@v1
+              with:
+                  php-version: ${{ matrix.php-versions }}
+                  extensions: ${{ env.extensions }}
+                  key: ${{ env.key }}
 
-    - name: Cache extensions
-      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
-      with:
-        path: ${{ steps.extcache.outputs.dir }}
-        key: ${{ steps.extcache.outputs.key }}
-        restore-keys: ${{ steps.extcache.outputs.key }}
+            - name: Cache extensions
+              uses: actions/cache@v4
+              with:
+                  path: ${{ steps.extcache.outputs.dir }}
+                  key: ${{ steps.extcache.outputs.key }}
+                  restore-keys: ${{ steps.extcache.outputs.key }}
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@a36e1e52ff4a1c9e9c9be31551ee4712a6cb6bd0 # v2.27.1
-      with:
-        php-version: ${{ matrix.php-versions }}
-        extensions: ${{ env.extensions }}
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-versions }}
+                  extensions: ${{ env.extensions }}
 
-    - name: Dependencies
-      run: composer update
+            - name: Dependencies
+              run: composer update
 
-    - name: Lint
-      run: composer run lint
+            - name: Lint
+              run: composer run lint
 
-    - name: Test
-      run: composer run test
+            - name: Test
+              run: composer run test
