@@ -69,7 +69,7 @@ class Assets
         $entries = is_array($entrypoint) ? $entrypoint : [$entrypoint];
 
         add_action($action, function () use ($entries, $options) {
-            array_map(function($entry) use ($options) {
+            array_map(function ($entry) use ($options) {
                 $tag = $this->isStylesheet($entry)
                     ? array_key_first($this->getStyleTags($entry, $options))
                     : $this->getScriptTag($entry, $options);
@@ -81,16 +81,16 @@ class Assets
         }, $this->getPriority($priority, "scripts"), 1);
 
         add_action($action, function () use ($entries) {
-            array_map(function($entry) {
-                array_map(function($preloadTag) {
+            array_map(function ($entry) {
+                array_map(function ($preloadTag) {
                     echo $preloadTag . PHP_EOL;
                 }, $this->getPreloadTags($entry));
             }, $entries);
         }, $this->getPriority($priority, "preloads"), 1);
 
         add_action($action, function () use ($entries, $options) {
-            array_map(function($entry) use ($options) {
-                array_map(function($styleTag) {
+            array_map(function ($entry) use ($options) {
+                array_map(function ($styleTag) {
                     echo $styleTag . PHP_EOL;
                 }, $this->getStyleTags($entry, $options));
             }, $entries);
