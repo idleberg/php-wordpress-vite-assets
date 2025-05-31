@@ -1,0 +1,7 @@
+{
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"[php]": {
+		"editor.defaultFormatter": "devsense.phptools-vscode"
+	}
+}
