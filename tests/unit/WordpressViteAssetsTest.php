@@ -11,12 +11,12 @@ class AssetsTest extends \Codeception\Test\Unit
 
     protected $basePath;
     protected $viteAssets;
-    protected $baseUrl = __DIR__ . "/../_data/";
+    protected $baseUrl = 'file://' . __DIR__ . '/../_data/';
     protected $manifest = __DIR__ . "/../_data/manifest.json";
 
     protected function _before()
     {
-        $this->basePath = realpath($this->baseUrl);
+        $this->basePath = 'file://' . realpath(__DIR__ . '/../_data');
         $this->viteAssets = new Assets($this->manifest, $this->baseUrl);
     }
 
