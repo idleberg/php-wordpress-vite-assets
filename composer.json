@@ -41,7 +41,7 @@
         "format": "vendor/bin/php-cs-fixer fix ./src",
         "lint": "php -l ./src",
         "test": [
-            "vendor/bin/phpstan analyse ./src --memory-limit=512M --level 5",
+            "vendor/bin/phpstan analyse ./src --memory-limit=512M --level 7",
             "php -d register_argc_argv=On vendor/bin/codecept run"
         ],
         "unused": "vendor/bin/composer-dependency-analyser"

@@ -29,6 +29,8 @@ use Idleberg\ViteManifest\Manifest;
 class Assets
 {
     private Manifest $vm;
+
+    /** @var array{action: string|null, crossorigin: bool|string, integrity: bool, priority: int|array<string, int>} */
     private array $defaultOptions = [
         "action" => null,
         "crossorigin" => true,
@@ -45,8 +47,8 @@ class Assets
     /**
      * Injects tags for entries specified in the manifest to the page header.
      *
-     * @param array|string $entrypoint
-     * @param array $customOptions (optional)
+     * @param array<string>|string $entrypoint
+     * @param array<string, mixed> $customOptions (optional)
      * @return void
      */
     public function inject(array|string $entrypoint, array $customOptions = []): void
@@ -101,7 +103,7 @@ class Assets
      * Returns the script tag for an entry in the manifest.
      *
      * @param string $entrypoint
-     * @param array $customOptions (optional)
+     * @param array<string, mixed> $customOptions (optional)
      * @return string
      */
     public function getScriptTag(string $entrypoint, array $customOptions = []): string
@@ -128,8 +130,8 @@ class Assets
      * Returns the style tags for an entry in the manifest.
      *
      * @param string $entrypoint
-     * @param array $customOptions (optional)
-     * @return array
+     * @param array<string, mixed> $customOptions (optional)
+     * @return array<string>
      */
     public function getStyleTags(string $entrypoint, array $customOptions = []): array
     {
@@ -152,7 +154,7 @@ class Assets
      * Returns the preload tags for an entry in the manifest.
      *
      * @param string $entry
-     * @return array
+     * @return array<string>
      */
     public function getPreloadTags(string $entry): array
     {
@@ -166,30 +168,25 @@ class Assets
     /**
      * Returns priority for an action.
      *
-     * @param array|int $priority
+     * @param array<string, int>|int $priority
      * @param string $key
      * @return int
      */
     private function getPriority(array|int $priority, string $key): int
     {
-        switch (true) {
-            case is_integer($priority):
-                return $priority;
-
-            case is_array($priority) && is_integer($priority[$key]):
-                return $priority[$key];
-
-            default:
-                return 0;
+        if (is_integer($priority)) {
+            return $priority;
         }
+
+        return $priority[$key] ?? 0;
     }
 
     /**
      * Returns optional attributes for script or link tags.
      *
-     * @param array $url
-     * @param array $attributes
-     * @param array $customOptions
+     * @param array<string, string> $url
+     * @param array<string> $attributes
+     * @param array<string, mixed> $customOptions
      * @return string
      */
     private function getAttributes(array $url, array $attributes, array $customOptions): string
@@ -212,8 +209,8 @@ class Assets
     /**
      * Merges custom options with defaults.
      *
-     * @param array $options (optional)
-     * @return array
+     * @param array<string, mixed> $options (optional)
+     * @return array<string, mixed>
      */
     private function mergeOptions(array $options = []): array
     {
