@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f11c67f17c9b2fcac9cff5a4452d4b11",
+    "content-hash": "1e80fe0829b785e3bd4f48cf54e9643e",
     "packages": [
         {
             "name": "idleberg/vite-manifest",
-            "version": "v1.2.3",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/idleberg/php-vite-manifest.git",
-                "reference": "9625f28e191efb1f7f6633831562f8744e933d49"
+                "reference": "26b765bac140237e413a16b79fa6de3cf315f4aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/9625f28e191efb1f7f6633831562f8744e933d49",
-                "reference": "9625f28e191efb1f7f6633831562f8744e933d49",
+                "url": "https://api.github.com/repos/idleberg/php-vite-manifest/zipball/26b765bac140237e413a16b79fa6de3cf315f4aa",
+                "reference": "26b765bac140237e413a16b79fa6de3cf315f4aa",
                 "shasum": ""
             },
             "require": {
                 "league/uri": "^7.4.1",
-                "php": ">=8.1"
+                "php": ">=8.2"
             },
             "require-dev": {
                 "brainmaestro/composer-git-hooks": "^3.0.0",
@@ -76,7 +76,7 @@
             ],
             "support": {
                 "issues": "https://github.com/idleberg/php-vite-manifest/issues",
-                "source": "https://github.com/idleberg/php-vite-manifest/tree/v1.2.3"
+                "source": "https://github.com/idleberg/php-vite-manifest/tree/v2.0.0"
             },
             "funding": [
                 {
@@ -84,7 +84,7 @@
                     "type": "buy_me_a_coffee"
                 }
             ],
-            "time": "2026-01-10T16:12:45+00:00"
+            "time": "2026-01-10T17:02:49+00:00"
         },
         {
             "name": "league/uri",
@@ -6847,7 +6847,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.1"
+        "php": ">=8.2"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
