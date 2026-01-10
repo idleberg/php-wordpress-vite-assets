@@ -164,7 +164,7 @@ class Assets
      * @param string $key
      * @return int
      */
-    private function getPriority(array|int $priority, string $key)
+    private function getPriority(array|int $priority, string $key): int
     {
         switch (true) {
             case is_integer($priority):
@@ -186,7 +186,7 @@ class Assets
      * @param array $customOptions
      * @return string
      */
-    private function getAttributes(array $url, array $attributes, array $customOptions)
+    private function getAttributes(array $url, array $attributes, array $customOptions): string
     {
         ["crossorigin" => $crossorigin, "integrity" => $integrity] = $this->mergeOptions($customOptions);
 
@@ -209,7 +209,7 @@ class Assets
      * @param array $options (optional)
      * @return array
      */
-    private function mergeOptions(array $options = [])
+    private function mergeOptions(array $options = []): array
     {
         return array_merge(
             $this->defaultOptions,
@@ -223,7 +223,7 @@ class Assets
      * @param string $entry
      * @return bool
      */
-    private function isStylesheet(string $entry)
+    private function isStylesheet(string $entry): bool
     {
         $styleSheets = ['.css', '.less', '.scss', '.styl'];
 
