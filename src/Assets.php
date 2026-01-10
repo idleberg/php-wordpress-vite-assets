@@ -231,7 +231,7 @@ class Assets
      */
     private function isStylesheet(string $entry): bool
     {
-        $styleSheets = ['.css', '.less', '.scss', '.styl'];
+        $styleSheets = ['css', 'less', 'scss', 'styl'];
 
         return in_array(pathinfo($entry, PATHINFO_EXTENSION), $styleSheets);
     }
