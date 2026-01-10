@@ -114,9 +114,11 @@ class Assets
             return "";
         }
 
+        $escapedUrl = $this->escapeUrl($url['url']);
+
         $defaultAttributes = [
             "type=\"module\"",
-            "src=\"{$url['url']}\""
+            "src=\"{$escapedUrl}\""
         ];
 
         return "<script {$this->getAttributes($url, $defaultAttributes, $options)}></script>";
@@ -135,9 +137,11 @@ class Assets
         $hash = $options["integrity"] ?? true;
 
         return array_map(function ($url) use ($options) {
+            $escapedUrl = $this->escapeUrl($url['url']);
+
             $defaultAttributes = [
                 "rel=\"stylesheet\"",
-                "href=\"{$url['url']}\""
+                "href=\"{$escapedUrl}\""
             ];
 
             return "<link {$this->getAttributes($url, $defaultAttributes, $options)} />";
@@ -153,7 +157,9 @@ class Assets
     public function getPreloadTags(string $entry): array
     {
         return array_map(function ($import) {
-            return "<link rel=\"modulepreload\" href=\"{$import['url']}\" />";
+            $escapedUrl = $this->escapeUrl($import['url']);
+
+            return "<link rel=\"modulepreload\" href=\"{$escapedUrl}\" />";
         }, $this->vm->getImports($entry));
     }
 
@@ -228,5 +234,10 @@ class Assets
         $styleSheets = ['.css', '.less', '.scss', '.styl'];
 
         return in_array(pathinfo($entry, PATHINFO_EXTENSION), $styleSheets);
+    }
+
+    private function escapeUrl(string $url): string
+    {
+        return htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
     }
 }
