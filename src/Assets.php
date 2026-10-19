@@ -72,9 +72,12 @@ class Assets
 
         add_action($action, function () use ($entries, $options) {
             array_map(function ($entry) use ($options) {
-                $tag = $this->isStylesheet($entry)
-                    ? array_key_first($this->getStyleTags($entry, $options))
-                    : $this->getScriptTag($entry, $options);
+                // Stylesheet entries are printed in the styles slot
+                if ($this->isStylesheet($entry)) {
+                    return;
+                }
+
+                $tag = $this->getScriptTag($entry, $options);
 
                 if ($tag) {
                     echo $tag . PHP_EOL;
