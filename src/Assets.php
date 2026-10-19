@@ -164,7 +164,7 @@ class Assets
             $escapedUrl = $this->escapeUrl($import['url']);
 
             return "<link rel=\"modulepreload\" href=\"{$escapedUrl}\" />";
-        }, $this->vm->getImports($entry));
+        }, $this->vm->getImports($entry, false));
     }
 
     /**

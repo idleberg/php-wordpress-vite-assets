@@ -197,4 +197,13 @@ class AssetsTest extends \Codeception\Test\Unit
             $this->assertEquals($actual, $expected);
         }
     }
+
+    public function testGetPreloadTagsSkipsHashing()
+    {
+        // The manifest has no integrity fields, so hashing imports would throw
+        $viteAssets = new Assets($this->manifest, $this->baseUrl, ":manifest:");
+        $expected = ["<link rel=\"modulepreload\" href=\"{$this->basePath}/assets/vendor.deadbeef.js\" />"];
+
+        $this->assertSame($expected, $viteAssets->getPreloadTags("demo.ts"));
+    }
 }
