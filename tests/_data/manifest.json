@@ -17,5 +17,10 @@
     "file": "assets/demo.deadbeef.css",
     "isEntry": true,
     "src": "demo.css"
+  },
+  "demo.sass": {
+    "file": "assets/demo.deadbeef.css",
+    "isEntry": true,
+    "src": "demo.sass"
   }
 }

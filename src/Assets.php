@@ -72,7 +72,6 @@ class Assets
 
         add_action($action, function () use ($entries, $options) {
             array_map(function ($entry) use ($options) {
-                // Stylesheet entries are printed in the styles slot
                 if ($this->isStylesheet($entry)) {
                     return;
                 }
@@ -224,16 +223,16 @@ class Assets
     }
 
     /**
-     * Determines whether a file is a stylesheet based on its extension.
+     * Determines whether an entry is a stylesheet based on its output file, which covers any preprocessor.
      *
      * @param string $entry
      * @return bool
      */
     private function isStylesheet(string $entry): bool
     {
-        $styleSheets = ['css', 'less', 'scss', 'styl'];
+        $file = $this->vm->getManifest()[$entry]["file"] ?? null;
 
-        return in_array(pathinfo($entry, PATHINFO_EXTENSION), $styleSheets);
+        return is_string($file) && str_ends_with($file, '.css');
     }
 
     private function escapeUrl(string $url): string
