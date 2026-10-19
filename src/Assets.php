@@ -187,7 +187,7 @@ class Assets
     /**
      * Returns optional attributes for script or link tags.
      *
-     * @param array<string, string> $url
+     * @param array<string, string|null> $url
      * @param array<string> $attributes
      * @param array<string, mixed> $customOptions
      * @return string
@@ -202,7 +202,7 @@ class Assets
             $attributes[] = "crossorigin=\"{$crossorigin}\"";
         }
 
-        if ($integrity === true) {
+        if ($integrity === true && $url['hash'] !== null) {
             $attributes[] = "integrity=\"{$url['hash']}\"";
         }
 

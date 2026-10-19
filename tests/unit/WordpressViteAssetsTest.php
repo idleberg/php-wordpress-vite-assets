@@ -206,4 +206,13 @@ class AssetsTest extends \Codeception\Test\Unit
 
         $this->assertSame($expected, $viteAssets->getPreloadTags("demo.ts"));
     }
+
+    public function testGetStyleTagsWithoutManifestHash()
+    {
+        // vite-plugin-manifest-sri doesn't add integrity to css lists, so no attribute is printed
+        $viteAssets = new Assets($this->manifest, $this->baseUrl, ":manifest:");
+        $expected = ["<link rel=\"stylesheet\" href=\"{$this->basePath}/assets/index.deadbeef.css\" crossorigin />"];
+
+        $this->assertSame($expected, $viteAssets->getStyleTags("demo.ts"));
+    }
 }
