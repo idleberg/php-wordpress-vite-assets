@@ -84,20 +84,21 @@ class Assets
             }, $entries);
         }, $this->getPriority($priority, "scripts"), 1);
 
+        // Entries can share imports and stylesheets, so tags are deduplicated across all of them
         add_action($action, function () use ($entries) {
-            array_map(function ($entry) {
-                array_map(function ($preloadTag) {
-                    echo $preloadTag . PHP_EOL;
-                }, $this->getPreloadTags($entry));
-            }, $entries);
+            $preloadTags = array_merge(...array_map(fn($entry) => $this->getPreloadTags($entry), $entries));
+
+            foreach (array_unique($preloadTags) as $preloadTag) {
+                echo $preloadTag . PHP_EOL;
+            }
         }, $this->getPriority($priority, "preloads"), 1);
 
         add_action($action, function () use ($entries, $options) {
-            array_map(function ($entry) use ($options) {
-                array_map(function ($styleTag) {
-                    echo $styleTag . PHP_EOL;
-                }, $this->getStyleTags($entry, $options));
-            }, $entries);
+            $styleTags = array_merge(...array_map(fn($entry) => $this->getStyleTags($entry, $options), $entries));
+
+            foreach (array_unique($styleTags) as $styleTag) {
+                echo $styleTag . PHP_EOL;
+            }
         }, $this->getPriority($priority, "styles"), 1);
     }
 

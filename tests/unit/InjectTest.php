@@ -41,7 +41,7 @@ class InjectTest extends \Codeception\Test\Unit
         $GLOBALS['wp_actions'] = [];
     }
 
-    private function render(string $entrypoint): string
+    private function render(array|string $entrypoint): string
     {
         (new Assets($this->manifest, "https://example.invalid/"))->inject($entrypoint, ["integrity" => false]);
 
@@ -56,6 +56,19 @@ class InjectTest extends \Codeception\Test\Unit
     {
         $actual = $this->render("demo.sass");
         $expected = "<link rel=\"stylesheet\" href=\"https://example.invalid/assets/demo.deadbeef.css\" crossorigin />" . PHP_EOL;
+
+        $this->assertSame($expected, $actual);
+    }
+
+    public function testInjectDeduplicatesSharedTags()
+    {
+        $actual = $this->render(["demo.ts", "demo2.ts"]);
+        $expected = implode(PHP_EOL, [
+            "<script type=\"module\" src=\"https://example.invalid/assets/index.deadbeef.js\" crossorigin></script>",
+            "<script type=\"module\" src=\"https://example.invalid/assets/demo2.deadbeef.js\" crossorigin></script>",
+            "<link rel=\"modulepreload\" href=\"https://example.invalid/assets/vendor.deadbeef.js\" />",
+            "<link rel=\"stylesheet\" href=\"https://example.invalid/assets/index.deadbeef.css\" crossorigin />",
+        ]) . PHP_EOL;
 
         $this->assertSame($expected, $actual);
     }

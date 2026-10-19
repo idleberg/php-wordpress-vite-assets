@@ -22,5 +22,16 @@
     "file": "assets/demo.deadbeef.css",
     "isEntry": true,
     "src": "demo.sass"
+  },
+  "demo2.ts": {
+    "file": "assets/demo2.deadbeef.js",
+    "src": "demo2.ts",
+    "isEntry": true,
+    "imports": [
+      "vendor.deadbeef.js"
+    ],
+    "css": [
+      "assets/index.deadbeef.css"
+    ]
   }
 }
